@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Datos del comprador</title>
+</head>
+<body>
+<header>
+  <img src="img/encabezado.png" width="100px">
+  <h1>Crea tu <strong>factura</strong></h1>
+</header>
+<h3>Completa los datos del comprador</h3>
+<form id="Formulario_de_facturacion">
+  <p>
+    <label for="Nombre">Nombre: <input type="text" name="Nombre" placeholder="Nombre" id="Nombre"></label>
+  </p>
+  <p>
+    <label for="Cuit">Nro de cuit <input type="number" name="Cuit" placeholder="Nro de Cuit" id="Cuit"></label>
+  </p>
+  <p>
+    <label for="Telefono">Telefono: <input type="number" name="Telefono" placeholder="0000000" id="Telefono"></label>
+  </p>
+  <p>
+    <label for="Direccion">Direccion: <input type="text" name="direccion" placeholder="Direccion" id="Direccion"></label>
+  </p>
+  <p>
+    Tipo de factura:
+    <select name="tipo_de_factura">
+      <option>Factura A</option>
+      <option>Factura B</option>
+      <option>Factura C</option>
+    </select>
+  </p>
+</form>
+<p>
+  <button type="button" onclick="location.href='PaginaInicio.html'">Anterior</button>
+  <button type="button" onclick="location.href='ItemsAIngresar.html'">Siguiente</button>
+</p>
+
+</body>
+</html>

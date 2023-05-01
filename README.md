@@ -1,5 +1,16 @@
-# proyecto2023
-Estructura de Proyecto Lab de Compu II - 2023
+# Facturacion
+Esta pagina corresponde a un software de facturacion con fines educativos
+
+## Autores 
+* Strumia, Constanza
+* Salinas, Delfina
+
+## Tecnologias usadas
+* HTML5
+* CSS3
+
+## Link al sitio
+[Software de facturación](https://ucc-labcompu2.github.io/proyecto2023-salinas-strumia/)
 
 ## Requisitos del Primer Parcial
 
@@ -12,23 +23,23 @@ Estructura de Proyecto Lab de Compu II - 2023
 - [ ] El repositorio no debe contener archivos innecesarios (no debe contener .idea o .vsc, en todo caso emplear **.gitignore**)
 
 ### Sobre el Proyecto General
-- [ ] La página principal debe llamarse index
-- [ ] Identar correctamente el código (en Webstorm Ctrl+Alt+L)
+- [x] La página principal debe llamarse index
+- [x] Identar correctamente el código (en Webstorm Ctrl+Alt+L)
 - [ ] No debe haber errores presentes (realizar *Code* > *Inspect Code* para verificar que no haya errores)
-- [ ] Se debe emplear algún favicon
+- [x] Se debe emplear algún favicon
 - [ ] Emplear alguna fuente de google fonts o subir al proyecto alguna fuente externa
-- [ ] Debe haber navegación entre todas las páginas
+- [x] Debe haber navegación entre todas las páginas
 
 ### Sobre el HTML
 - [ ] Todas las etiquetas deben estar en minúscula
 - [ ] Poner comillas a todos los atributos
 - [ ] Title debe contener el título de la página
-- [ ] En el ```<head></head>``` incluir las etiquetas ```<meta>``` detallando: autor, descripcion y palabras clave
+- [x] En el ```<head></head>``` incluir las etiquetas ```<meta>``` detallando: autor, descripcion y palabras clave
 - [ ] Emplear al menos 3 etiquetas semánticas diferentes (header, nav, aside, main, section, article, footer)
 - [ ] Emplear ```<header></header>```. En el contenido de la cabecera debe haber un título ```<h1></h1>```, puede tener color de fondo, algún logotipo, etc.
-- [ ] Debe haber por lo menos una etiqueta ```<img>``` en la página.
+- [x] Debe haber por lo menos una etiqueta ```<img>``` en la página.
 - [ ] La estructura de la página debe estar definida con ```<div></div>```
-- [ ] Debe contener al menos 3 elementos de tipo ```<input>``` o ```<select>``` ó ```<button>``` que le permitan al usuario ingresar valores para poder realizar un cálculo de un ejercicio.
+- [x] Debe contener al menos 3 elementos de tipo ```<input>``` o ```<select>``` ó ```<button>``` que le permitan al usuario ingresar valores para poder realizar un cálculo de un ejercicio.
 - [ ] Debe contener un ```<canvas>```, para que posteriormente (en la 2da etapa) se grafique alguna imagen representativa del ejercicio. (el desarrollo del gráfico se realizará cuando se vea la unidad de “Orientación a Eventos”)
 - [ ] No espaciar con excesivos ```<br>```. Utilizar márgenes, paddings, etc.
 - [ ] No utilizar etiquetas deprecadas.

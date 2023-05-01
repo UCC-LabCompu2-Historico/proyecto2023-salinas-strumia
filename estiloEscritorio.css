@@ -1,0 +1,37 @@
+header{
+    margin: 10px 15px;
+    padding: 40px;
+    background-color: rgb(158, 182, 227);
+
+}
+#Encabezado{
+    position:absolute;
+    top: 25px;
+    left: 30px;
+    width: 175px;
+}
+h1 {
+    font-size: 50px;
+    text-align: center;
+}
+h3{
+    text-align: center;
+    background-color: #c5c5c5;
+    margin: 25px 550px;
+    font-size: 25px;
+}
+
+#Formulario_de_facturacion{
+    text-align: center;
+    font-size: 20px;
+}
+#decoracion{
+    position: relative;
+    left:1200px;
+    width: 250px;
+    bottom: 250px
+}
+#botones{
+    display: block;
+    margin-left: 900px;
+}

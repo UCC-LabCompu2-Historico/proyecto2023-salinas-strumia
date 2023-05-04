@@ -43,3 +43,15 @@ h3{
 #ingreso_producto {
   text-align: center;
 }
+#FacturaFinal{
+    border:1px solid #d3d3d3;
+    position: relative;
+    left:555px;
+    bottom: 5px
+}
+#decoracion_relleno{
+    position: relative;
+    left:1200px;
+    width: 250px;
+    bottom: 150px
+}

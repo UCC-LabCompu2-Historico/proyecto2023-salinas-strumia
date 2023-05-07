@@ -1,8 +1,18 @@
+body{
+    text-align: center;
+    font-family: 'Barlow', sans-serif;
+
+
+}
 header{
     margin: 10px 15px;
     padding: 40px;
     background-color: rgb(158, 182, 227);
 
+}
+main{
+    margin: 10px 300px;
+    text-align: center;
 }
 #Encabezado{
     position:absolute;
@@ -36,17 +46,17 @@ h3{
     margin-left: 900px;
 }
 #Ingresos{
- text-align: center;
+    text-align: center;
 
 }
 
-#ingreso_producto {
-  text-align: center;
+.ingreso_producto {
+    text-align: center;
 }
 #FacturaFinal{
     border:1px solid #d3d3d3;
     position: relative;
-    left:555px;
+    left:50px;
     bottom: 5px
 }
 #decoracion_relleno{
@@ -54,4 +64,8 @@ h3{
     left:1200px;
     width: 250px;
     bottom: 150px
+}
+
+button:hover{
+    color: #b4c5ff;
 }

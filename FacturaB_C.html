@@ -15,38 +15,42 @@
 <body>
 <header>
   <div>
-    <img id="Encabezado" src="img/encabezado.png">
-  <h1>Crea tu <strong>factura</strong></h1>
+    <img id="Encabezado" src="img/encabezado.png" alt="Imagen representativa sobre el area contable, incluye papeles y dinero">
+    <h1>Crea tu <strong>factura</strong></h1>
   </div>
 </header>
-<h3>Factura tipo B/C</h3>
-
-<table id="ingreso_producto">
-  <div>
-  <thead>
-  <tr>
-    <th>Descripción</th>
-    <th>Cantidad</th>
-    <th>Precio Unitario</th>
-    <th>Total</th>
-  </tr>
-  </thead>
-    <tbody>
-    <tr>
+<nav>
+  <h3>Factura tipo B/C</h3>
+</nav>
+<main>
+  <table class="ingreso_producto">
+    <caption>Ingrese la informacion de los productos a facturar</caption>
+    <div>
+      <thead>
+      <tr>
+        <th>Descripción</th>
+        <th>Cantidad</th>
+        <th>Precio Unitario</th>
+        <th>Total</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
         <td><label for="Descripcion"> <input type="text" name="Descripcion" placeholder="Descripcion" id="Descripcion"></label></td>
-      <td><label for="Cantidad"> <input type="number" name="Cantidad" placeholder="Cant" id="Cantidad"></label></td>
-      <td><label for="Precio_unitario"> <input type="number" name="Precio unitario" placeholder="Precio unit." id="Precio_unitario"></label></td>
-      <td><label for="Total"> <input type="number" name="Total" placeholder="Total" id="Total"></label></td>
-    </tr>
-    </tbody>
-  </div>
-</table>
+        <td><label for="Cantidad"> <input type="number" name="Cantidad" placeholder="Cant" id="Cantidad"></label></td>
+        <td><label for="Precio_unitario"> <input type="number" name="Precio unitario" placeholder="Precio unit." id="Precio_unitario"></label></td>
+        <td><label for="Total"> <input type="number" name="Total" placeholder="Total" id="Total"></label></td>
+      </tr>
+      </tbody>
+    </div>
+  </table>
+</main>
 <p>
-  <div id="botones">
+<div id="botones">
   <button type="button" onclick="location.href='ItemsAIngresar.html'">Anterior</button>
   <button type="button" onclick="location.href='Factura_final.html'">Siguiente</button>
 </div>
 </p>
-<img id="decoracion" src="img/imagen_extra.png">
+<img id="decoracion" src="img/imagen_extra.png" alt="Imagen vectorizada de ticket">
 </body>
 </html>

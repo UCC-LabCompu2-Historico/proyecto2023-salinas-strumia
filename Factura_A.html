@@ -15,68 +15,72 @@
 <body>
 <header>
   <div>
-    <img id="Encabezado" src="img/encabezado.png">
-  <h1>Crea tu <strong>factura</strong></h1>
+    <img id="Encabezado" src="img/encabezado.png" alt="Imagen representativa sobre el area contable, incluye papeles y dinero">
+    <h1>Crea tu <strong>factura</strong></h1>
   </div>
 </header>
-<div>
-<h3>Factura tipo A</h3>
-</div>
-<table id="ingreso_producto">
-  <form>
-  <div>
-  <thead>
-  <tr>
-    <th>Descripción</th>
-    <th>Cantidad</th>
-    <th>Precio Unitario</th>
-    <th>Porcentaje IVA</th>
-    <th>IVA</th>
-    <th>Total</th>
-  </tr>
-  </thead>
-    <tbody>
-<tr>
-  <td><label for="Descripcion"> <input type="text" name="Descripcion" placeholder="Descripcion" id="Descripcion"></label></td>
-  <td><label for="Cantidad"> <input type="number" name="Cantidad" placeholder="Cant" id="Cantidad"></label></td>
-  <td><label for="Precio_unitario"> <input type="number" name="Precio unitario" placeholder="Precio unit." id="Precio_unitario"></label></td>
-  <td>
-    <select name="porDeIva">
-    <option>0%</option>
-    <option>10,5%</option>
-    <option>21%</option>
-    <option>27%</option>
-  </select></td>
-  <td><label for="IVA"> <input type="number" name="IVA" placeholder="IVA" id="IVA"></label> </td>
-  <td><label for="Total"> <input type="number" name="Total" placeholder="Total" id="Total"></label></td>
 
-</tr>
-<tr>
-  <td><label for="Descripcion1"> <input type="text" name="Descripcion" placeholder="Descripcion" id="Descripcion1"></label></td>
-  <td><label for="Cantidad1"> <input type="number" name="Cantidad" placeholder="Cant" id="Cantidad1"></label></td>
-  <td><label for="Precio_unitario1"> <input type="number" name="Precio unitario" placeholder="Precio unit." id="Precio_unitario1"></label></td>
-  <td>
-    <select name="porDeIva">
-      <option>0%</option>
-      <option>10,5%</option>
-      <option>21%</option>
-      <option>27%</option>
-    </select></td>
-  <td><label for="IVA1"> <input type="number" name="IVA" placeholder="IVA" id="IVA1"></label> </td>
-  <td><label for="Total1"> <input type="number" name="Total" placeholder="Total" id="Total1"></label></td>
+<nav>
+  <h3>Factura tipo A</h3>
+</nav>
+<main>
+  <table class="ingreso_producto">
+    <caption>Ingrese la informacion de los productos a facturar</caption>
+    <form>
+      <div>
+        <thead>
+        <tr>
+          <th>Descripción</th>
+          <th>Cantidad</th>
+          <th>Precio Unitario</th>
+          <th>Porcentaje IVA</th>
+          <th>IVA</th>
+          <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><label for="Descripcion"> <input type="text" name="Descripcion" placeholder="Descripcion" id="Descripcion"></label></td>
+          <td><label for="Cantidad"> <input type="number" name="Cantidad" placeholder="Cant" id="Cantidad"></label></td>
+          <td><label for="Precio_unitario"> <input type="number" name="Precio unitario" placeholder="Precio unit." id="Precio_unitario"></label></td>
+          <td><label>
+            <select name="porDeIva">
+              <option>0%</option>
+              <option>10,5%</option>
+              <option>21%</option>
+              <option>27%</option>
+            </select></label></td>
+          <td><label for="IVA"> <input type="number" name="IVA" placeholder="IVA" id="IVA"></label> </td>
+          <td><label for="Total"> <input type="number" name="Total" placeholder="Total" id="Total"></label></td>
 
-</tr>
-    </tbody>
-  </div>
-  </form>
-</table>
+        </tr>
+        <tr>
+          <td><label for="Descripcion1"> <input type="text" name="Descripcion" placeholder="Descripcion" id="Descripcion1"></label></td>
+          <td><label for="Cantidad1"> <input type="number" name="Cantidad" placeholder="Cant" id="Cantidad1"></label></td>
+          <td><label for="Precio_unitario1"> <input type="number" name="Precio unitario" placeholder="Precio unit." id="Precio_unitario1"></label></td>
+          <td>
+            <select name="porDeIva">
+              <option>0%</option>
+              <option>10,5%</option>
+              <option>21%</option>
+              <option>27%</option>
+            </select></td>
+          <td><label for="IVA1"> <input type="number" name="IVA" placeholder="IVA" id="IVA1"></label> </td>
+          <td><label for="Total1"> <input type="number" name="Total" placeholder="Total" id="Total1"></label></td>
 
+        </tr>
+
+        </tbody>
+      </div>
+    </form>
+  </table>
+</main>
 <p>
-  <div id="botones">
+<div id="botones">
   <button type="button" onclick="location.href='ItemsAIngresar.html'">Anterior</button>
   <button type="button" onclick="location.href='Factura_final.html'">Siguiente</button>
 </div>
 </p>
-<img id="decoracion_relleno" src="img/imagen_extra.png">
+<img id="decoracion_relleno" src="img/imagen_extra.png"  alt="Imagen vectorizada de ticket">
 </body>
 </html>

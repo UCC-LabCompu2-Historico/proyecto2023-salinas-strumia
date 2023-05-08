@@ -44,7 +44,7 @@ Esta pagina corresponde a un software de facturacion con fines educativos
 - [x] No espaciar con excesivos ```<br>```. Utilizar márgenes, paddings, etc.
 - [x] No utilizar etiquetas deprecadas.
 - [x] Todas las etiquetas deben estar correctamente cerradas
-- [ ] Los ids de los elementos deben ser unívocos
+- [x] Los ids de los elementos deben ser unívocos
 
 ### Sobre el CSS
 - [x] El estilo de los elementos debe establecerse en un archivo CSS (prohibido poner el atributo style a los elementos o emplear estilos incrustados).
@@ -53,9 +53,9 @@ Esta pagina corresponde a un software de facturacion con fines educativos
 - [x] No emplear !important
 
 ### Sobre Accesibilidad:
-- [ ] Toda imagen debe tener su etiqueta alt
+- [x] Toda imagen debe tener su etiqueta alt
 - [x] Todo ```<input>``` o ```<select>``` debe tener su ```<label>```
-- [ ] Los labels deben contener el atributo **for** (el for debe contener el id del input al cual se referencia) 
+- [x] Los labels deben contener el atributo **for** (el for debe contener el id del input al cual se referencia) 
 - [x] Si hay una tabla en la página, debe contener ```<caption></caption>```
 
 ### Sobre las correcciones

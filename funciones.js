@@ -5,7 +5,7 @@
  */
 function calculo() {
     var cant = parseInt(document.getElementById("Cantidad").value)||0;
-    var pUnit=parseInt(document.getElementById(PrecUnit).value) || 0;
+    var pUnit=parseInt(document.getElementById("PrecUnit").value) || 0;
     var iva = parseInt(document.getElementById("cantIva").value)||0;
     var subt = cant*pUnit;
     var cantIva = (subt*iva)/100;

@@ -25,6 +25,7 @@
 <nav>
   <h3>Factura tipo A</h3>
 </nav>
+
 <main>
   <table class="ingreso_producto" name="productos">
     <caption>Ingrese la informacion de los productos a facturar</caption>
@@ -39,7 +40,7 @@
         <th>Total</th>
       </tr>
       </thead>
-      <tbody>
+      <tbody id="filas-productos"></tbody>
       <tr>
         <td><label for="Descripcion">
           <input type="text" name="Descripcion" placeholder="Descripcion" id="Descripcion">
@@ -58,18 +59,14 @@
             <option value="27">27%</option>
           </select></label></td>
         <td><label for="IVA">
-          <input type="text" name="IVA" placeholder="IVA" id="IVA" readonly >
-        </label> </td>
+          <input type="text" name="IVA" placeholder="IVA" id="IVA" readonly>
+        </label></td>
         <td><label for="Total">
           <input type="text" name="Total" placeholder="Total" id="Total" readonly>
         </label></td>
-
       </tr>
-
-      </tbody>
     </form>
   </table>
-
 </main>
 
 <div id="botones">
@@ -77,6 +74,10 @@
   <button type="button" onclick="location.href='Factura_final.html'">Siguiente</button>
 </div>
 
-<img class="decoracion2" src="img/imagen_extra.png"  alt="Imagen vectorizada de ticket">
+<img class="decoracion2" src="img/imagen_extra.png" alt="Imagen vectorizada de ticket">
+
+<script>
+  generarFilas_FACTURA_A();
+</script>
 </body>
 </html>

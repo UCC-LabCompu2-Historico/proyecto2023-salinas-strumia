@@ -15,4 +15,31 @@ function calculo() {
     document.getElementById("Total").value=total;
 }
 
+const generarFilas_FACTURA_A = () => {
+    const cantidadProductos = parseInt(localStorage.getItem('cant_de_itemns'));
+    const filasProductos = document.getElementById('filas-productos');
 
+    /* Limpiar filas previas
+    filasProductos.innerHTML = '';*/
+
+    for (let i = 1; i <= cantidadProductos; i++) {
+        const fila = `
+      <tr>
+        <td><input type="text" name="descripcion-${i}" placeholder="Descripción"></td>
+        <td><input type="number" name="cantidad-${i}" placeholder="Cantidad" onchange="calcularTotal(${i})"></td>
+        <td><input type="number" name="precio-${i}" placeholder="Precio Unitario" onchange="calcularTotal(${i})"></td>
+        <td>
+          <select name="porcentajeIva-${i}" onchange="calcularTotal(${i})">
+            <option value="0">0%</option>
+            <option value="10.5">10.5%</option>
+            <option value="21">21%</option>
+            <option value="27">27%</option>
+          </select>
+        </td>
+        <td><input type="text" name="iva-${i}" placeholder="IVA" readonly></td>
+        <td><input type="text" name="total-${i}" placeholder="Total" readonly></td>
+      </tr>
+    `;
+        filasProductos.innerHTML += fila;
+    }
+};

@@ -3,24 +3,31 @@
  * @method calculo
  * @param {number} valor - contiene el valor del imput que ingresa el usuario
  */
-function calculo() {
-    var cant = parseInt(document.getElementById("Cantidad").value)||0;
-    var pUnit=parseInt(document.getElementById("PrecUnit").value) || 0;
-    var iva = parseInt(document.getElementById("cantIva").value)||0;
-    var subt = cant*pUnit;
-    var cantIva = (subt*iva)/100;
-    var total=subt+cantIva;
+function calculoA() {
+    const cant = parseInt(document.getElementById("Cantidad").value)||0;
+    const pUnit=parseInt(document.getElementById("PrecUnit").value) || 0;
+    const iva = parseInt(document.getElementById("cantIva").value)||0;
+    const subt = cant*pUnit;
+    const cantIva = (subt*iva)/100;
+    const total=subt+cantIva;
 
     document.getElementById("IVA").value= cantIva;
     document.getElementById("Total").value=total;
 }
+
+function calculoB(){
+    const cant=parseInt(document.getElementById("cant").value)||0;
+    const pUnit=parseInt(document.getElementById("pUnit").value)||0;
+    const total=cant*pUnit;
+
+    document.getElementById("total").value=total;
+}
+
 /*
 function generarFilas() {
     var cantidadProductos = parseInt(document.getElementById("cant_de_itemns").value);
     var filaBase = document.getElementById("filaBase");
     var tbody = document.getElementById("filasFactura");
-
-
 
     for (var i = 0; i < cantidadProductos; i++) {
         var fila = filaBase.cloneNode(true);

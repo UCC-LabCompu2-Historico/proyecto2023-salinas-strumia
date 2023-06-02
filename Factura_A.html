@@ -40,21 +40,30 @@
         <th>Total</th>
       </tr>
       </thead>
-      <tbody id="filasFactura">
-      <tr id="filaBase" style="display: none;">
-        <td><input type="text" name="Descripcion" placeholder="Descripcion" class="descripcion"></td>
-        <td><input type="number" name="Cantidad" placeholder="Cant" class="cantidad" onchange="calculo()"></td>
-        <td><input type="number" name="PrecUnit" placeholder="Precio unit." class="precio" onchange="calculo()"></td>
-        <td>
-          <select name="porDeIva" class="iva" onchange="calculo()">
+      <tbody>
+      <tr>
+        <td><label for="Descripcion">
+          <input type="text" name="Descripcion" placeholder="Descripcion" class="descripcion" id="Descripcion">
+        </label></td>
+        <td><label for="Cantidad">
+          <input type="number" name="Cantidad" placeholder="Cant" class="cantidad" onchange="calculoA()" id="Cantidad">
+        </label></td>
+        <td><label for="PrecUnit">
+          <input type="number" name="PrecUnit" placeholder="Precio unit." class="precio" id="PrecUnit" onchange="calculoA()">
+        </label></td>
+        <td><label for="cantIva"></label>
+          <select name="porDeIva" class="iva" onchange="calculoA()" id="cantIva">
             <option value="0">0%</option>
             <option value="10.5">10.5%</option>
             <option value="21">21%</option>
             <option value="27">27%</option>
           </select>
         </td>
-        <td><input type="text" name="IVA" placeholder="IVA" class="iva" readonly></td>
-        <td><input type="text" name="Total" placeholder="Total" class="total" readonly></td>
+        <td><label for="IVA">
+          <input type="text" name="IVA" placeholder="IVA" class="iva" readonly id="IVA">
+        </label></td>
+        <td><label for="Total"><input type="text" name="Total" placeholder="Total" id="Total" class="total" readonly>
+        </label></td>
       </tr>
       </tbody>
     </form>

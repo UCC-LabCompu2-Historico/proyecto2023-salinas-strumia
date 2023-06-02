@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=Bitter:wght@300&family=Bruno+Ace+SC&family=Playfair+Display&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="estiloEscritorio.css" type="text/css">
+  <script type="text/javascript" src="funciones.js"></script>
 </head>
 <body>
 <header>
@@ -34,12 +35,13 @@
         <th>Total</th>
       </tr>
       </thead>
-      <tbody>
-      <tr>
-        <td><label for="Descripcion"> <input type="text" name="Descripcion" placeholder="Descripcion" id="Descripcion"></label></td>
-        <td><label for="Cantidad"> <input type="number" name="Cantidad" placeholder="Cant" id="Cantidad"></label></td>
-        <td><label for="Precio_unitario"> <input type="number" name="Precio unitario" placeholder="Precio unit." id="Precio_unitario"></label></td>
-        <td><label for="Total"> <input type="number" name="Total" placeholder="Total" id="Total"></label></td>
+      <tbody id="filasFactura">
+      <tr id="filaBase" style="display: none;">
+        <td><input type="text" name="Descripcion" placeholder="Descripcion" class="descripcion"></td>
+        <td><input type="number" name="Cantidad" placeholder="Cant" class="cantidad" onchange="calculo()"></td>
+        <td><input type="number" name="PrecUnit" placeholder="Precio unit." class="precio" onchange="calculo()"></td>
+        <td><input type="text" name="IVA" placeholder="IVA" class="iva" readonly></td>
+        <td><input type="text" name="Total" placeholder="Total" class="total" readonly></td>
       </tr>
       </tbody>
     </div>

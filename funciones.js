@@ -14,32 +14,44 @@ function calculo() {
     document.getElementById("IVA").value= cantIva;
     document.getElementById("Total").value=total;
 }
+/*
+function generarFilas() {
+    var cantidadProductos = parseInt(document.getElementById("cant_de_itemns").value);
+    var filaBase = document.getElementById("filaBase");
+    var tbody = document.getElementById("filasFactura");
 
-const generarFilas_FACTURA_A = () => {
-    const cantidadProductos = parseInt(localStorage.getItem('cant_de_itemns'));
-    const filasProductos = document.getElementById('filas-productos');
 
-    /* Limpiar filas previas
-    filasProductos.innerHTML = '';*/
 
-    for (let i = 1; i <= cantidadProductos; i++) {
-        const fila = `
-      <tr>
-        <td><input type="text" name="descripcion-${i}" placeholder="Descripción"></td>
-        <td><input type="number" name="cantidad-${i}" placeholder="Cantidad" onchange="calcularTotal(${i})"></td>
-        <td><input type="number" name="precio-${i}" placeholder="Precio Unitario" onchange="calcularTotal(${i})"></td>
-        <td>
-          <select name="porcentajeIva-${i}" onchange="calcularTotal(${i})">
-            <option value="0">0%</option>
-            <option value="10.5">10.5%</option>
-            <option value="21">21%</option>
-            <option value="27">27%</option>
-          </select>
-        </td>
-        <td><input type="text" name="iva-${i}" placeholder="IVA" readonly></td>
-        <td><input type="text" name="total-${i}" placeholder="Total" readonly></td>
-      </tr>
-    `;
-        filasProductos.innerHTML += fila;
+    for (var i = 0; i < cantidadProductos; i++) {
+        var fila = filaBase.cloneNode(true);
+        fila.removeAttribute("id");
+        fila.style.display = "";
+
+        // Asignar identificadores únicos a los campos de entrada
+        fila.getElementsByClassName("descripcion")[0].name = "Descripcion_" + i;
+        fila.getElementsByClassName("cantidad")[0].name = "Cantidad_" + i;
+        fila.getElementsByClassName("precio")[0].name = "PrecUnit_" + i;
+        fila.getElementsByClassName("iva")[0].name = "cantIva_" + i;
+        fila.getElementsByClassName("iva")[0].onchange = calculo;
+        fila.getElementsByClassName("iva")[0].id = "cantIva_" + i;
+        fila.getElementsByClassName("iva")[0].setAttribute("data-index", i);
+        fila.getElementsByClassName("iva")[0].value = 0;
+        fila.getElementsByClassName("iva")[0].onchange();
+
+        tbody.appendChild(fila);
     }
-};
+}*/
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    // Obtener los datos ingresados en el formulario
+    const nombre = localStorage.getItem('nombre');
+    const cuit = localStorage.getItem('cuit');
+    const actividadPrincipal = localStorage.getItem('actividad_principal');
+    const logotipo = localStorage.getItem('logotipo');
+
+    // Actualizar los elementos del resumen de la factura con los datos obtenidos
+    document.getElementById('nombre').textContent = nombre;
+    document.getElementById('cuit').textContent = cuit;
+    document.getElementById('actividad_principal').textContent = actividadPrincipal;
+    document.getElementById('logotipo').src = logotipo;
+});

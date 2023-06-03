@@ -39,7 +39,7 @@ function calculoB(){
 }
 
 function generarTablaA(){
-    let cantFilas=parseInt(document.getElementById('cant_de_itemns').value);
+    let cantFilas=document.getElementById('cant_de_itemns').value;
     if (isNaN(cantFilas)||cantFilas<=0){
         alert('Por favor ingrese un valor numerico positivo');
         return;
@@ -49,37 +49,14 @@ function generarTablaA(){
 }
 
 function cargarPaginaA(){
-    const url= new URLSearchParams(window.location.search);
-    const cantFilas=parseInt(urlParams.get('filas'));
+    let url= new URLSearchParams(window.location.search);
+    let cantFilas=urlParams.get('filas');
 
     let tabla = document.createElement('table');
     tabla.id='tabla';
 
-    let thead=document.createElement('thead');
-    let trHead=document.createElement('tr');
-    let thDescripcion = document.createElement('th');
-    thDescripcion.textContent='Descripcion'
-    let thCantidad=document.createElement('th');
-    thCantidad.textContent='Cantidad';
-    let thPrecUnit=document.createElement('th');
-    thPrecUnit.textContent="Precio Unitario";
-    let thIva=document.createElement('th');
-    thIva.textContent='% IVA';
-    let thCIva=document.createElement('th');
-    thCIva.textContent='IVA';
-    let thTotal=document.createElement('th');
-    thTotal.textContent='Total';
 
-    trHead.appendChild(thDescripcion);
-    trHead.appendChild(thCantidad);
-    trHead.appendChild(thPrecUnit);
-    trHead.appendChild(thIva);
-    trHead.appendChild(thCIva);
-    trHead.appendChild(thTotal);
-    thead.appendChild(trHead);
-    tabla.appendChild(thead);
-
-    var tbody=document.createElement('tbody');
+    var tbody=document.createElement('cuerpoTabla');
     for (let i=1; i<=cantFilas; i++){
         let tr =document.createElement('tr');
 
@@ -144,9 +121,7 @@ function cargarPaginaA(){
     tabla.appendChild(tbody);
     document.body.appendChild(tabla);
 }
-if (window.location.href.indexOf('Factura_A')!==-1){
-    window.onload=cargarPaginaA;
-}
+
 
 window.addEventListener('DOMContentLoaded', (event) => {
     // Obtener los datos ingresados en el formulario

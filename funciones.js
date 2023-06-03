@@ -144,6 +144,9 @@ function cargarPaginaA(){
     tabla.appendChild(tbody);
     document.body.appendChild(tabla);
 }
+if (window.location.href.indexOf('Factura_A')!==-1){
+    window.onload=cargarPaginaA;
+}
 
 window.addEventListener('DOMContentLoaded', (event) => {
     // Obtener los datos ingresados en el formulario

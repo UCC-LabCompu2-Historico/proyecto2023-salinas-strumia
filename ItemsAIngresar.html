@@ -23,7 +23,8 @@
   <h3>¿Cuantos productos desea ingresar?</h3>
   <form>
     <p>
-      <label for="cant_de_itemns"> <input type="number" name="Cant_de_items" placeholder="ej.:4" id="cant_de_itemns"></label>
+      <label for="cant_de_itemns">
+        <input type="number" name="Cant_de_items" placeholder="ej.:4" id="cant_de_itemns"></label>
     </p>
   </form>
 
@@ -31,11 +32,12 @@
 <div id="botones">
   <p>
     <button type="button" onclick="location.href='DatosComprador.html'">Anterior</button>
-    <button type="button" onclick="location.href='Factura_A.html'; generarFilas();">Factura A</button>
-    <button type="button" onclick="location.href='FacturaB_C.html'; generarFilas();">Factura B/C</button>
+    <button type="button" onclick="generarTablaA()">Factura A</button>
+    <button type="button" onclick="generarTablaB/C()">Factura B/C</button>
 
   </p>
 </div>
 <img class="decoracion1" src="img/imagen_extra.png" alt="Imagen vectorizada de ticket">
 </body>
 </html>
+

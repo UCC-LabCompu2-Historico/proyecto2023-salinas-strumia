@@ -2,51 +2,35 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Factura B/C</title>
+  <title>Descarga tu factura</title>
   <link rel="shorcut icon" href="img/Favicon.png">
   <meta content="Salinas Strumia" name="author">
   <meta name="description" content="Software orientado a la facturación con fines educativos">
-  <meta name="keywords" content="Facuracion, educacion">
+  <meta name="keywords" content="Facturacion, educacion">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=Bitter:wght@300&family=Bruno+Ace+SC&family=Playfair+Display&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="estiloEscritorio.css" type="text/css">
   <script type="text/javascript" src="funciones.js"></script>
+
 </head>
-<body>
+<body onload="dibujarCanvasB()">
 <header>
   <div>
     <img id="Encabezado" src="img/encabezado.png" alt="Imagen representativa sobre el area contable, incluye papeles y dinero">
     <h1>Crea tu <strong>factura</strong></h1>
   </div>
 </header>
-<nav>
-  <h3>Factura tipo B/C</h3>
-</nav>
 <main>
-  <table class="ingreso_producto">
-    <caption>Ingrese la informacion de los productos a facturar</caption>
-    <div>
-      <thead>
-      <tr>
-        <th>Descripción</th>
-        <th>Cantidad</th>
-        <th>Precio Unitario</th>
-        <th>Total</th>
-      </tr>
-      </thead>
-      <tbody id="cuerpoTablaB"> </tbody>
-    </div>
-  </table>
-  <script>
-    cargarPaginaB();
-  </script>
+  <canvas id="canvasB" width="400" height="400"></canvas>
+
+  <div id="botones">
+    <button type="button" onclick="location.href='index.html'">Nueva factura</button>
+  </div>
+  <img id="decoracion_relleno" src="img/imagen_extra.png" alt="Imagen vectorizada de ticket">
+
+
 
 </main>
-<div id="botones">
-  <button type="button" onclick="location.href='ItemsAIngresar.html'">Anterior</button>
-  <button type="button" onclick="enviarDatosB()">Siguiente</button>
-</div>
-<img class="decoracion2" src="img/imagen_extra.png" alt="Imagen vectorizada de ticket">
 </body>
 </html>

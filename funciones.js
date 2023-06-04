@@ -83,7 +83,7 @@ function cargarPaginaA(cuerpoTabla1 = cuerpoTabla) {
 
         let ivaCaluladoCell=fila.insertCell(4);
         let ivaCalculadoId='IVA_' + (i+1);
-        ivaCaluladoCell.innerHTML='<input type="text" name="IVA" placeholder="IVA" class="iva" id="' + ivaCalculadoId +'" readonly>'
+        ivaCaluladoCell.innerHTML='<input type="text" name="IVA" placeholder="IVA" class="Civa" id="' + ivaCalculadoId +'" readonly>'
         ivaCaluladoCell.classList.add('ivaCalculado');
 
         let totalCell=fila.insertCell(5);
@@ -129,93 +129,116 @@ function cargarPaginaB(){
     }
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-    // Obtener los datos ingresados en el formulario
-    const nombre = localStorage.getItem('nombre');
-    const cuit = localStorage.getItem('cuit');
-    const actividadPrincipal = localStorage.getItem('actividad_principal');
-    const logotipo = localStorage.getItem('logotipo');
 
-    // Actualizar los elementos del resumen de la factura con los datos obtenidos
-    document.getElementById('nombre').textContent = nombre;
-    document.getElementById('cuit').textContent = cuit;
-    document.getElementById('actividad_principal').textContent = actividadPrincipal;
-    document.getElementById('logotipo').src = logotipo;
-});
-function canvas() {
-    let i;
-// Obtener referencia al canvas y su contexto
-    let canvas = document.getElementById("canvas");
-    let ctx = canvas.getContext("2d");
+function enviarDatos(){
+    let cuerpoTabla=document.getElementById('cuerpoTabla');
+    let filas=cuerpoTabla.getElementsByTagName('tr');
 
-    // Obtener los datos del vendedor, usuario y el IVA
-    let vendedorNombre = document.getElementById("vendedorNombre").textContent;
-    let vendedorCuit = document.getElementById("vendedorCuit").textContent;
-    let Act_principal = document.getElementById("Act_principal").textContent;
+    let produtos=[];
+    for (let i=0; i<filas.length; i++){
+        let descripcion=filas[i].querySelector(' .descripcion').value;
+        let cantidad = parseFloat(filas[i].querySelector(' .cantidad').value);
+        let precioUnitario=parseFloat(filas[i].querySelector(' .precio').value);
+        let selectorIva=filas[i].querySelector(' .iva');
+        let iva=parseFloat(selectorIva.options[selectorIva.selectedIndex].value);
+        let ivaCalculado = parseFloat(filas[i].querySelector(' .ivaCalculado input').value);
+        let total = parseFloat(filas[i].querySelector(' .total input').value);
 
-    // Obtener los datos del comprador
-    let compradorNombre = document.getElementById("compradorNombre").textContent;
-    let compradorCuit = document.getElementById("compradorCuit").textContent;
-    let compradorTelefono = document.getElementById("compradorTelefono").textContent;
-    let compradorDireccion = document.getElementById("compradorDireccion").textContent;
-
-    // Obtener la información de los productos del formulario
-    let productos = [];
-    // Obtener los valores de los productos ingresados por el usuario
-    let descripcionInputs = document.getElementsByClassName("descripcion");
-    let precioInputs = document.getElementsByClassName("precio");
-
-    for (i = 0; i < descripcionInputs.length; i++) {
-        let descripcion = descripcionInputs[i].value;
-        let precio = parseFloat(precioInputs[i].value) || 0;
-
-        if (descripcion && precio > 0) {
-            // Agregar el producto a la lista de productos
-            productos.push({
-                descripcion: descripcion,
-                precio: precio
-            });
-        }
-    }
-
-    // Dibujar la información en el lienzo VENDEDOR
-    ctx.font = "16px Arial";
-    ctx.fillText("Información del VENDEDOR:", 10, 30);
-    ctx.fillText("Nombre: " + vendedorNombre, 10, 50);
-    ctx.fillText("CUIT: " + vendedorCuit, 10, 70);
-    ctx.fillText("Actividad Principal: " + Act_principal, 10, 90);
-
-    // Dibujar la información en el lienzo COMPRADOR
-    ctx.font = "16px Arial";
-    ctx.fillText("Información del COMPRADOR:", 10, 130);
-    ctx.fillText("Nombre: " + compradorNombre, 10, 150);
-    ctx.fillText("CUIT: " + compradorCuit, 10, 170);
-    ctx.fillText("Telefono: " + compradorTelefono, 10, 190);
-    ctx.fillText("Direccion: " + compradorDireccion, 10, 210);
-
-    // Dibujar la información de los productos
-    ctx.fillText("Productos:", 10, 250);
-    let y = 270; // Coordenada Y para dibujar los productos
-    for (i = 0; i < productos.length; i++) {
-        let producto = productos[i];
-        let descripcionProducto = producto.descripcion;
-        let precioProducto = producto.precio;
-        ctx.fillText(descripcionProducto + ": $" + precioProducto, 10, y);
-        y += 20; // Incrementar la coordenada Y para el próximo producto
-    }
-
-    // Dibujar el logotipo (si está disponible)
-    let logotipo = document.getElementById("vendedorLogo");
-    if (logotipo.complete) {
-        ctx.drawImage(logotipo, 10, y + 40, 100, 100);
-    } else {
-        logotipo.onload = function() {
-            ctx.drawImage(logotipo, 10, y + 40, 100, 100);
+        let producto ={
+            descripcion: descripcion,
+            cantidad: cantidad,
+            precioUnitario: precioUnitario,
+            iva: iva,
+            ivaCalculado: ivaCalculado,
+            total: total
         };
+        produtos.push(producto);
+    }
+
+    sessionStorage.setItem('productos', JSON.stringify(produtos));
+    window.location.href='Factura_final.html';
+}
+
+function dibujarCanvas(){
+    let canvas=document.getElementById('canvas');
+    let ctx=canvas.getContext('2d');
+    ctx.clearRect(0,0, canvas.width, canvas.height);
+
+    ctx.font='bold 15px Helvetica';
+    let productos=JSON.parse(sessionStorage.getItem('productos'));
+
+    let x=10;
+    let y=10;
+    let espacio=20;
+
+    for (let i=0; i<productos.length; i++){
+        y += espacio;
+        let descripcion= productos[i].descripcion;
+        let cantidad = productos[i].cantidad;
+        let precioUnitario=productos[i].precioUnitario;
+        let iva= productos[i].iva;
+        let ivaCalculado = productos[i].ivaCalculado;
+        let total = productos[i].total;
+
+        ctx.fillText(descripcion, x, y);
+        ctx.fillText('Cantidad: ' + cantidad, x, y +20)
+        ctx.fillText('Precio unitario: ' +precioUnitario, x, y +40);
+        ctx.fillText('Iva:' +iva + '%', x, y +60);
+        ctx.fillText('Iva total: ' +ivaCalculado.toFixed(2), x, y +80);
+        ctx.fillText('Total: ' +total.toFixed(2), x, y +100);
+
+        y +=120;
     }
 }
 
-// Llamar a la función canvas() cuando se cargue la página
-window.addEventListener('load', canvas);
+function enviarDatosB(){
+    let cuerpoTablaB=document.getElementById('cuerpoTablaB');
+    let filasB=cuerpoTablaB.getElementsByTagName('tr');
 
+    let produtosB=[];
+    for (let i=0; i<filasB.length; i++){
+        let descripcion=filasB[i].querySelector(' .descripcion').value;
+        let cantidad = parseFloat(filasB[i].querySelector(' .cantidad').value);
+        let precioUnitario=parseFloat(filasB[i].querySelector(' .precio').value);
+        let total = parseFloat(filasB[i].querySelector(' .total input').value);
 
+        let productoB ={
+            descripcion: descripcion,
+            cantidad: cantidad,
+            precioUnitario: precioUnitario,
+            total: total
+        };
+        produtosB.push(productoB);
+    }
+
+    sessionStorage.setItem('productosB', JSON.stringify(produtosB));
+    window.location.href='Factura_finalB.html';
+}
+
+function dibujarCanvasB(){
+    let canvasB=document.getElementById('canvasB');
+    let ctx=canvasB.getContext('2d');
+    ctx.clearRect(0,0, canvasB.width, canvasB.height);
+
+    ctx.font='bold 15px Time new roman';
+    let productosB=JSON.parse(sessionStorage.getItem('productosB'));
+
+    let xB=10;
+    let yB=10;
+    let espacio=20;
+
+    for (let i=0; i<productosB.length; i++){
+        yB += espacio;
+        let descripcion= productosB[i].descripcion;
+        let cantidad = productosB[i].cantidad;
+        let precioUnitario=productosB[i].precioUnitario;
+        let total = productosB[i].total;
+
+        ctx.fillText(descripcion, xB, yB);
+        ctx.fillText('Cantidad: ' + cantidad, xB, yB +20)
+        ctx.fillText('Precio unitario: ' +precioUnitario, xB, yB +40);
+        ctx.fillText('Total: ' +total.toFixed(2), xB, yB +100);
+
+        yB +=120;
+    }
+}

@@ -40,7 +40,7 @@ function calculoB(fila){
 }
 
 function generarTablaA(){
-    var cantFilas=document.getElementById('cant_de_itemns').value;
+    let cantFilas = document.getElementById('cant_de_itemns').value;
     if (isNaN(cantFilas)||cantFilas<=0){
         alert('Por favor ingrese un valor numerico positivo');
         return;
@@ -51,14 +51,14 @@ function generarTablaA(){
 
 
 
-function cargarPaginaA(){
+function cargarPaginaA(cuerpoTabla1 = cuerpoTabla) {
     let url= new URLSearchParams(window.location.search);
     let cantFilas = url.get('filas');
 
 
     let tbody=document.createElement('cuerpoTabla');
     for (let i=0; i<cantFilas; i++){
-        let fila = cuerpoTabla.insertRow(i);
+        let fila = cuerpoTabla1.insertRow(i);
 
         let descripcionCell=fila.insertCell(0);
         let descripcionId= "Descripcion_" +(i+1);
@@ -93,7 +93,7 @@ function cargarPaginaA(){
     }
 }
 function generarTablaB(){
-    var cantFilas=document.getElementById('cant_de_itemns').value;
+    let cantFilas = document.getElementById('cant_de_itemns').value;
     if (isNaN(cantFilas)||cantFilas<=0){
         alert('Por favor ingrese un valor numerico positivo');
         return;
@@ -106,6 +106,7 @@ function cargarPaginaB(){
 
     let tbody=document.createElement('cuerpoTablaB');
     for (let i=0; i<cantFilas; i++){
+        let cuerpoTablaB;
         let fila = cuerpoTablaB.insertRow(i);
 
         let descripcionCell=fila.insertCell(0);
@@ -128,7 +129,7 @@ function cargarPaginaB(){
     }
 }
 
-window.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener('DOMContentLoaded', () => {
     // Obtener los datos ingresados en el formulario
     const nombre = localStorage.getItem('nombre');
     const cuit = localStorage.getItem('cuit');
@@ -141,3 +142,80 @@ window.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('actividad_principal').textContent = actividadPrincipal;
     document.getElementById('logotipo').src = logotipo;
 });
+function canvas() {
+    let i;
+// Obtener referencia al canvas y su contexto
+    let canvas = document.getElementById("canvas");
+    let ctx = canvas.getContext("2d");
+
+    // Obtener los datos del vendedor, usuario y el IVA
+    let vendedorNombre = document.getElementById("vendedorNombre").textContent;
+    let vendedorCuit = document.getElementById("vendedorCuit").textContent;
+    let Act_principal = document.getElementById("Act_principal").textContent;
+
+    // Obtener los datos del comprador
+    let compradorNombre = document.getElementById("compradorNombre").textContent;
+    let compradorCuit = document.getElementById("compradorCuit").textContent;
+    let compradorTelefono = document.getElementById("compradorTelefono").textContent;
+    let compradorDireccion = document.getElementById("compradorDireccion").textContent;
+
+    // Obtener la información de los productos del formulario
+    let productos = [];
+    // Obtener los valores de los productos ingresados por el usuario
+    let descripcionInputs = document.getElementsByClassName("descripcion");
+    let precioInputs = document.getElementsByClassName("precio");
+
+    for (i = 0; i < descripcionInputs.length; i++) {
+        let descripcion = descripcionInputs[i].value;
+        let precio = parseFloat(precioInputs[i].value) || 0;
+
+        if (descripcion && precio > 0) {
+            // Agregar el producto a la lista de productos
+            productos.push({
+                descripcion: descripcion,
+                precio: precio
+            });
+        }
+    }
+
+    // Dibujar la información en el lienzo VENDEDOR
+    ctx.font = "16px Arial";
+    ctx.fillText("Información del VENDEDOR:", 10, 30);
+    ctx.fillText("Nombre: " + vendedorNombre, 10, 50);
+    ctx.fillText("CUIT: " + vendedorCuit, 10, 70);
+    ctx.fillText("Actividad Principal: " + Act_principal, 10, 90);
+
+    // Dibujar la información en el lienzo COMPRADOR
+    ctx.font = "16px Arial";
+    ctx.fillText("Información del COMPRADOR:", 10, 130);
+    ctx.fillText("Nombre: " + compradorNombre, 10, 150);
+    ctx.fillText("CUIT: " + compradorCuit, 10, 170);
+    ctx.fillText("Telefono: " + compradorTelefono, 10, 190);
+    ctx.fillText("Direccion: " + compradorDireccion, 10, 210);
+
+    // Dibujar la información de los productos
+    ctx.fillText("Productos:", 10, 250);
+    let y = 270; // Coordenada Y para dibujar los productos
+    for (i = 0; i < productos.length; i++) {
+        let producto = productos[i];
+        let descripcionProducto = producto.descripcion;
+        let precioProducto = producto.precio;
+        ctx.fillText(descripcionProducto + ": $" + precioProducto, 10, y);
+        y += 20; // Incrementar la coordenada Y para el próximo producto
+    }
+
+    // Dibujar el logotipo (si está disponible)
+    let logotipo = document.getElementById("vendedorLogo");
+    if (logotipo.complete) {
+        ctx.drawImage(logotipo, 10, y + 40, 100, 100);
+    } else {
+        logotipo.onload = function() {
+            ctx.drawImage(logotipo, 10, y + 40, 100, 100);
+        };
+    }
+}
+
+// Llamar a la función canvas() cuando se cargue la página
+window.addEventListener('load', canvas);
+
+

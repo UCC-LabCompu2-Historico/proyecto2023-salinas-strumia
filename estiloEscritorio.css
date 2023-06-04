@@ -75,3 +75,6 @@ h3{
 button:hover{
     color: #b4c5ff;
 }
+canvas {
+    border: 1px solid #000;
+}

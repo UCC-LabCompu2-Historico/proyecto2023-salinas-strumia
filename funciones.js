@@ -61,16 +61,20 @@ function cargarPaginaA(){
         let fila = cuerpoTabla.insertRow(i);
 
         let descripcionCell=fila.insertCell(0);
-        descripcionCell.innerHTML= '<input type="text" name="Descripcion" placeholder="Descripcion" class="descripcion" id="Descripcion">'
+        let descripcionId= "Descripcion_" +(i+1);
+        descripcionCell.innerHTML= '<input type="text" name="Descripcion" placeholder="Descripcion" class="descripcion" id="' + descripcionId +'">'
 
         let cantidadCell=fila.insertCell(1);
-        cantidadCell.innerHTML=' <input type="number" name="Cantidad" placeholder="Cant" class="cantidad" id="Cantidad_" onchange="calculoA(this.parentNode.parentNode)" >'
+        let cantidadId='Cantidad_' + (i+1);
+        cantidadCell.innerHTML=' <input type="number" name="Cantidad" placeholder="Cant" class="cantidad" id="' + cantidadId +'" onchange="calculoA(this.parentNode.parentNode)" >'
 
         let precioUnitarioCell = fila.insertCell(2);
-        precioUnitarioCell.innerHTML='<input type="number" name="PrecUnit" placeholder="Precio unit." class="precio" id="PrecUnit_1" onchange="calculoA(this.parentNode.parentNode)">'
+        let pUnitId='PrecUnit_' + (i+1);
+        precioUnitarioCell.innerHTML='<input type="number" name="PrecUnit" placeholder="Precio unit." class="precio" id="' + pUnitId +'" onchange="calculoA(this.parentNode.parentNode)">'
 
         let ivaCell = fila.insertCell(3);
-        ivaCell.innerHTML='<select name="porDeIva" class="iva" onchange="calculoA(this.parentNode.parentNode)" id="cantIva">\n' +
+        let cantIvaId='cantIva_' + (i+1);
+        ivaCell.innerHTML='<select name="porDeIva" class="iva" onchange="calculoA(this.parentNode.parentNode)" id="' + cantIvaId +'">\n' +
             '                <option value="0">0%</option>\n' +
             '                <option value="10.5">10.5%</option>\n' +
             '                <option value="21">21%</option>\n' +
@@ -78,11 +82,13 @@ function cargarPaginaA(){
             '              </select>'
 
         let ivaCaluladoCell=fila.insertCell(4);
-        ivaCaluladoCell.innerHTML='<input type="text" name="IVA" placeholder="IVA" class="iva" id="IVA_1" readonly>'
+        let ivaCalculadoId='IVA_' + (i+1);
+        ivaCaluladoCell.innerHTML='<input type="text" name="IVA" placeholder="IVA" class="iva" id="' + ivaCalculadoId +'" readonly>'
         ivaCaluladoCell.classList.add('ivaCalculado');
 
         let totalCell=fila.insertCell(5);
-        totalCell.innerHTML='<input type="text" name="Total" placeholder="Total" id="Total_1" class="total" readonly>';
+        let totalId='Total_' + (i+1);
+        totalCell.innerHTML='<input type="text" name="Total" placeholder="Total" id="' + totalId +'" class="total" readonly>';
         totalCell.classList.add('total');
     }
 }
@@ -103,17 +109,21 @@ function cargarPaginaB(){
         let fila = cuerpoTablaB.insertRow(i);
 
         let descripcionCell=fila.insertCell(0);
-        descripcionCell.innerHTML= '<input type="text" name="Descripcion" placeholder="Descripcion" class="descripcion" id="Descripcion">'
+        let descripcionId='Descripcion_' + (i+1);
+        descripcionCell.innerHTML= '<input type="text" name="Descripcion" placeholder="Descripcion" class="descripcion" id="' + descripcionId +'">'
 
         let cantidadCell=fila.insertCell(1);
-        cantidadCell.innerHTML=' <input type="number" name="Cantidad" placeholder="Cant" class="cantidad" id="cant" onchange="calculoB(this.parentNode.parentNode)">'
+        let cantidadId='cant_' + (i+1);
+        cantidadCell.innerHTML=' <input type="number" name="Cantidad" placeholder="Cant" class="cantidad" id="' + cantidadId +'" onchange="calculoB(this.parentNode.parentNode)">'
 
         let precioUnitarioCell = fila.insertCell(2);
-        precioUnitarioCell.innerHTML='<input type="number" name="PrecUnit" placeholder="Precio unit." class="precio" id="pUnit" onchange="calculoB(this.parentNode.parentNode)">'
+        let preUnitId='pUnit_' + (i+1);
+        precioUnitarioCell.innerHTML='<input type="number" name="PrecUnit" placeholder="Precio unit." class="precio" id="' + preUnitId +'" onchange="calculoB(this.parentNode.parentNode)">'
 
 
         let totalCell=fila.insertCell(3);
-        totalCell.innerHTML=' <input type="text" name="Total" placeholder="Total" class="total" id="total" readonly>';
+        let totalId='total_' + (i+1);
+        totalCell.innerHTML=' <input type="text" name="Total" placeholder="Total" class="total" id="' + totalId +'" readonly>';
         totalCell.classList.add('totalB');
     }
 }

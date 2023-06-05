@@ -121,14 +121,13 @@ function generarTablaB(){
  * y establece clases y atributos en los elementos para permitir su manipulación posterior, como el cálculo del IVA y el total
  * @method cargarPaginaB
  */
-function cargarPaginaB(){
+function cargarPaginaB(cuerpoTabla2=cuerpoTablaB){
     let url= new URLSearchParams(window.location.search);
     let cantFilas = url.get('filas');
 
     let tbody=document.createElement('cuerpoTablaB');
     for (let i=0; i<cantFilas; i++){
-        let cuerpoTablaB;
-        let fila = cuerpoTablaB.insertRow(i);
+        let fila = cuerpoTabla2.insertRow(i);
 
         let descripcionCell=fila.insertCell(0);
         let descripcionId='Descripcion_' + (i+1);

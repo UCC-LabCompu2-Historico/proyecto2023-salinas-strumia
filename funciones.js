@@ -50,6 +50,7 @@ function generarTablaA(){
     let cantFilas = document.getElementById('cant_de_itemns').value;
     if (isNaN(cantFilas)||cantFilas<=0){
         alert('Por favor ingrese un valor numerico positivo');
+        document.getElementById("cant_de_itemns").value = "";
         return;
     }
 
@@ -112,6 +113,7 @@ function generarTablaB(){
     let cantFilas = document.getElementById('cant_de_itemns').value;
     if (isNaN(cantFilas)||cantFilas<=0){
         alert('Por favor ingrese un valor numerico positivo');
+        document.getElementById("cant_de_itemns").value = "";
         return;
     }
     window.location.href='FacturaB_C.html?filas=' +cantFilas;
@@ -274,3 +276,87 @@ function dibujarCanvasB(){
         yB +=120;
     }
 }
+/**
+ * Valida el nombre del vendedor
+ * @method validarNombreV
+ */
+function validarNombreV() {
+    var nombre = document.getElementById("vendedorNombre").value;
+
+    if (!isNaN(nombre)) {
+        alert("No se pueden ingresar números en el nombre. Por favor, ingresa un nombre válido.");
+        document.getElementById("vendedorNombre").value = "";
+    }
+}
+/**
+ * Valida el nombre del comprador
+ * @method validarNombreC
+ */
+function validarNombreC() {
+    var nombre = document.getElementById("compradorNombre").value;
+
+    if (!isNaN(nombre)) {
+        alert("No se pueden ingresar números en el nombre. Por favor, ingresa un nombre válido.");
+        document.getElementById("compradorNombre").value = "";
+    }
+}
+/**
+ * Valida el cuit del vendedor
+ * @method validarCuitV
+ */
+function validarCuitV() {
+    var cuit = document.getElementById("vendedorCuit").value;
+
+    if (cuit<0) {
+        alert("No se pueden ingresar números negativos en el CUIT. Por favor, ingresa un número válido.");
+        document.getElementById("vendedorCuit").value = "";
+    }
+}
+/**
+ * Valida el cuit del comprador
+ * @method validarCuitC
+ */
+function validarCuitC() {
+    var cuit = document.getElementById("compradorCuit").value;
+
+    if (cuit<0|| isNaN(cuit)) {
+        alert("No se pueden ingresar números negativos en el CUIT ni LETRAS. Por favor, ingresa un número válido.");
+        document.getElementById("compradorCuit").value = "";
+    }
+}
+/**
+ * Valida la actividad del vendedor
+ * @method validarActividad
+ */
+function validarActividad() {
+    var actividad = document.getElementById("vendedorActividad").value;
+
+    if (!isNaN(actividad)) {
+        alert("No se pueden ingresar números en la actividad principal. Por favor, ingresa una actividad válida.");
+        document.getElementById("vendedorActividad").value = "";
+    }
+}
+/**
+ * Valida el telefono del comprador
+ * @method validarTelefono
+ */
+function validarTelefono (){
+   var telefono = document.getElementById("compradorTelefono").value;
+
+   if (telefono<0){
+           alert("No se pueden ingresar números negativos en el Telefono. Por favor, ingresa un telefono válido.");
+           document.getElementById("compradorTelefono").value = "";
+       }
+}
+/**
+ * Valida la direccion del comprador
+ * @method validarDireccion
+ */
+function validarDireccion (){
+    var direccion = document.getElementById("compradorDireccion").value;
+    if (!isNaN(direccion)) {
+        alert("No se pueden ingresar números en la la direccion. Por favor, ingresa una direccion válida.");
+        document.getElementById("compradorDireccion").value = "";
+    }
+}
+

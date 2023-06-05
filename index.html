@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=Bitter:wght@300&family=Bruno+Ace+SC&family=Playfair+Display&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="estiloEscritorio.css" type="text/css">
+  <script type="text/javascript" src="funciones.js"></script>
 </head>
 <body>
 
@@ -27,13 +28,13 @@
 <main>
   <form id="Formulario_de_facturacion">
     <p>
-      <label for="vendedorNombre">Nombre: <input type="text" name="Nombre" placeholder="Nombre" id="vendedorNombre"></label>
+      <label for="vendedorNombre">Nombre: <input type="text" name="Nombre" placeholder="Nombre" id="vendedorNombre" onchange="validarNombreV()"></label>
     </p>
     <p>
-      <label for="vendedorCuit">Nro de cuit <input type="number" name="Cuit" placeholder="Nro de Cuit" id="vendedorCuit"></label>
+      <label for="vendedorCuit">Nro de cuit <input type="number" name="Cuit" placeholder="Nro de Cuit" id="vendedorCuit" onchange="validarCuitV()"></label>
     </p>
     <p>
-      <label for="vendedorActividad">Actividad Principal: <input type="text" name="Act_principal" placeholder="Coloca tu actividad" id="vendedorActividad"></label>
+      <label for="vendedorActividad">Actividad Principal: <input type="text" name="Act_principal" placeholder="Coloca tu actividad" id="vendedorActividad" onchange="validarActividad()"></label>
     </p>
     <p>
       <label for="vendedorLogo">Logotipo: <input type="file" name="Logotipo" placeholder="Subí tu logo" id="vendedorLogo"></label>

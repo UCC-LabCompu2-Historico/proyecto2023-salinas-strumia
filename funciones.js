@@ -1,7 +1,7 @@
 /**
- * calcula los totales de cada producto
- * @method calculo
- * @param {number} valor - contiene el valor del imput que ingresa el usuario
+ * Calcula los totales de cada producto de factura A
+ * @method calculoA
+ * @param {number} fila - Contiene el valor del input que ingresa el usuario de cantidad de productos
  */
 function calculoA(fila) {
     const cant = parseFloat(fila.querySelector(' .cantidad').value)||0;
@@ -22,7 +22,11 @@ function calculoA(fila) {
     fila.querySelector(' .ivaCalculado input').value= cantIva.toFixed(2);
     fila.querySelector(' .total input').value=total.toFixed(2);
 }
-
+/**
+ * Calcula los totales de cada producto de factura B/C
+ * @method calculoB
+ * @param {number} fila - Contiene el valor del input que ingresa el usuario de cantidad de productos
+ */
 function calculoB(fila){
     const cant = parseFloat(fila.querySelector(' .cantidad').value)||0;
     const pUnit=parseFloat(fila.querySelector(' .precio').value) || 0;
@@ -38,7 +42,10 @@ function calculoB(fila){
 
     fila.querySelector(' .totalB input').value=total.toFixed(2);
 }
-
+/**
+ * Genera una TABLA en la factura A(filas:cantidad de productos ingresados; columnas: datos del producto)
+ * @method generarTablaA
+ */
 function generarTablaA(){
     let cantFilas = document.getElementById('cant_de_itemns').value;
     if (isNaN(cantFilas)||cantFilas<=0){
@@ -50,7 +57,12 @@ function generarTablaA(){
 }
 
 
-
+/**
+ * crea una tabla con un número determinado de filas y celdas utilizando los parámetros de la URL,
+ * y establece clases y atributos en los elementos para permitir su manipulación posterior, como el cálculo del IVA y el total
+ * @method cargarPaginaA
+ * @param {number} cuerpoTabla1 - Variable utilizada para representar objetos o elementos de tabla en el documento HTML
+ */
 function cargarPaginaA(cuerpoTabla1 = cuerpoTabla) {
     let url= new URLSearchParams(window.location.search);
     let cantFilas = url.get('filas');
@@ -92,6 +104,10 @@ function cargarPaginaA(cuerpoTabla1 = cuerpoTabla) {
         totalCell.classList.add('total');
     }
 }
+/**
+ * Genera una TABLA en la factura B (filas:cantidad de productos ingresados; columnas: datos del producto)
+ * @method generarTablaB
+ */
 function generarTablaB(){
     let cantFilas = document.getElementById('cant_de_itemns').value;
     if (isNaN(cantFilas)||cantFilas<=0){
@@ -100,6 +116,11 @@ function generarTablaB(){
     }
     window.location.href='FacturaB_C.html?filas=' +cantFilas;
 }
+/**
+ * crea una tabla con un número determinado de filas y celdas utilizando los parámetros de la URL,
+ * y establece clases y atributos en los elementos para permitir su manipulación posterior, como el cálculo del IVA y el total
+ * @method cargarPaginaB
+ */
 function cargarPaginaB(){
     let url= new URLSearchParams(window.location.search);
     let cantFilas = url.get('filas');
@@ -128,8 +149,10 @@ function cargarPaginaB(){
         totalCell.classList.add('totalB');
     }
 }
-
-
+/**
+ * Obtiene la información de los productos del formulario de la factura de tipo A
+ * @method enviarDatos
+ */
 function enviarDatos(){
     let cuerpoTabla=document.getElementById('cuerpoTabla');
     let filas=cuerpoTabla.getElementsByTagName('tr');
@@ -158,7 +181,10 @@ function enviarDatos(){
     sessionStorage.setItem('productos', JSON.stringify(produtos));
     window.location.href='Factura_final.html';
 }
-
+/**
+ * Dibuja en un lienzo CANVAS la informacion de la factura A
+ * @method dibujarCanvas
+ */
 function dibujarCanvas(){
     let canvas=document.getElementById('canvas');
     let ctx=canvas.getContext('2d');
@@ -190,7 +216,10 @@ function dibujarCanvas(){
         y +=120;
     }
 }
-
+/**
+ * Obtiene la información de los productos del formulario de la factura de tipo B/C
+ * @method enviarDatosB
+ */
 function enviarDatosB(){
     let cuerpoTablaB=document.getElementById('cuerpoTablaB');
     let filasB=cuerpoTablaB.getElementsByTagName('tr');
@@ -214,7 +243,10 @@ function enviarDatosB(){
     sessionStorage.setItem('productosB', JSON.stringify(produtosB));
     window.location.href='Factura_finalB.html';
 }
-
+/**
+ * Dibuja en un lienzo CANVAS la informacion de la factura B/C
+ * @method dibujarCanvasB
+ */
 function dibujarCanvasB(){
     let canvasB=document.getElementById('canvasB');
     let ctx=canvasB.getContext('2d');

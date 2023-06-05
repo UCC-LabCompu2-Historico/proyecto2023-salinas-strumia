@@ -241,6 +241,7 @@ function enviarDatosB(){
 
     sessionStorage.setItem('productosB', JSON.stringify(produtosB));
     window.location.href='Factura_finalB.html';
+
 }
 /**
  * Dibuja en un lienzo CANVAS la informacion de la factura B/C

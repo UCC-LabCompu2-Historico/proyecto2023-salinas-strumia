@@ -68,8 +68,8 @@ Esta pagina corresponde a un software de facturacion con fines educativos
 
 ### Sobre el proyecto general
 - [x] Todas las correcciones y mejoras solicitadas durante el primer parcial deben estar corregidas.
-- [ ] No debe haber errores presentes en el código (realizar Code > Inspect Code para verificar que no haya errores)
-- [ ] No debe haber errores JavaScripts presentes. (ver con F12 si hay errores)
+- [x] No debe haber errores presentes en el código (realizar Code > Inspect Code para verificar que no haya errores)
+- [x] No debe haber errores JavaScripts presentes. (ver con F12 si hay errores)
 
 ### Sobre la funcionalidad JavaScript
 Se debe agregar funcionalidad Js a la página HTML+CSS desarrollada

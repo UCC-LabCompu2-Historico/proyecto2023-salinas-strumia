@@ -227,10 +227,10 @@ function enviarDatosB(){
 
     let produtosB=[];
     for (let i=0; i<filasB.length; i++){
-        let descripcion=filasB[i].querySelector(' .descripcion').value;
-        let cantidad = parseFloat(filasB[i].querySelector(' .cantidad').value);
-        let precioUnitario=parseFloat(filasB[i].querySelector(' .precio').value);
-        let total = parseFloat(filasB[i].querySelector(' .total input').value);
+        let descripcion=filasB[i].querySelector(" .descripcion").value;
+        let cantidad = parseFloat(filasB[i].querySelector(" .cantidad").value);
+        let precioUnitario=parseFloat(filasB[i].querySelector(" .precio").value);
+        let total = parseFloat(filasB[i].querySelector(" .totalB input").value);
 
         let productoB ={
             descripcion: descripcion,

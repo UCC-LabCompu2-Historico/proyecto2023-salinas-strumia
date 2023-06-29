@@ -26,16 +26,24 @@
 <main>
   <form id="Formulario_de_facturacion">
     <p>
-      <label for="compradorNombre">Nombre: <input type="text" name="Nombre" placeholder="Nombre" id="compradorNombre" onchange="validarNombreC()"></label>
+      <label for="compradorNombre">Nombre:
+        <input type="text" name="Nombre" placeholder="Nombre" id="compradorNombre" onchange="validarNombreC()" required>
+      </label>
     </p>
     <p>
-      <label for="compradorCuit">Nro de cuit <input type="number" name="Cuit" placeholder="Nro de Cuit" id="compradorCuit" onchange="validarCuitC()"></label>
+      <label for="compradorCuit">Nro de cuit
+        <input type="number" name="Cuit" placeholder="Nro de Cuit" id="compradorCuit" onchange="validarCuitC()" required>
+      </label>
     </p>
     <p>
-      <label for="compradorTelefono">Telefono: <input type="number" name="Telefono" placeholder="0000000" id="compradorTelefono" onchange="validarTelefono()"></label>
+      <label for="compradorTelefono">Telefono:
+        <input type="number" name="Telefono" placeholder="0000000" id="compradorTelefono" onchange="validarTelefono()" required>
+      </label>
     </p>
     <p>
-      <label for="compradorDireccion">Direccion: <input type="text" name="direccion" placeholder="Direccion" id="compradorDireccion" onchange="validarDireccion()"></label>
+      <label for="compradorDireccion">Direccion:
+        <input type="text" name="direccion" placeholder="Direccion" id="compradorDireccion" onchange="validarDireccion()" required>
+      </label>
     </p>
 
 
@@ -45,7 +53,7 @@
 
 <div id="botones">
   <button type="button" onclick="location.href='index.html'">Anterior</button>
-  <button type="button" onclick="location.href='ItemsAIngresar.html'">Siguiente</button>
+  <button type="button" onclick="validarComprador()">Siguiente</button>
 </div>
 
 <img id="decoracion3" src="img/imagen_extra.png" alt="Imagen vectorizada de ticket">

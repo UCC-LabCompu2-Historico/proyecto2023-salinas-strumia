@@ -271,9 +271,9 @@ function dibujarCanvasB(){
         ctx.fillText(descripcion, xB, yB);
         ctx.fillText('Cantidad: ' + cantidad, xB, yB +20)
         ctx.fillText('Precio unitario: ' +precioUnitario, xB, yB +40);
-        ctx.fillText('Total: ' +total.toFixed(2), xB, yB +100);
+        ctx.fillText('Total: ' +total.toFixed(2), xB, yB +60);
 
-        yB +=120;
+        yB +=80;
     }
 }
 /**
@@ -360,3 +360,30 @@ function validarDireccion (){
     }
 }
 
+function validarIndex(event){
+    var nombre=document.getElementById("vendedorNombre").value;
+    var cuit=document.getElementById("vendedorCuit").value;
+    var actPrincipal=document.getElementById("vendedorActividad").value;
+
+    if (!nombre || !cuit || !actPrincipal){
+        event.preventDefault();
+        alert("Complete los campos")
+    }else {
+        window.location.href="DatosComprador.html";
+    }
+
+}
+
+function validarComprador(event){
+    var nombre=document.getElementById("compradorNombre").value;
+    var cuit=document.getElementById("compradorCuit").value;
+    var telefono=document.getElementById("compradorTelefono").value;
+    var direccion=document.getElementById("compradorDireccion").value;
+
+    if (!nombre || !cuit || !telefono || !direccion){
+        event.preventDefault();
+        alert("Complete los datos solicitados");
+    }else {
+        window.location.href="ItemsAIngresar.html";
+    }
+}

@@ -159,6 +159,8 @@ function enviarDatos(){
     let filas=cuerpoTabla.getElementsByTagName('tr');
 
     let produtos=[];
+    let verificarCampos=false;
+
     for (let i=0; i<filas.length; i++){
         let descripcion=filas[i].querySelector(' .descripcion').value;
         let cantidad = parseFloat(filas[i].querySelector(' .cantidad').value);
@@ -177,11 +179,23 @@ function enviarDatos(){
             total: total
         };
         produtos.push(producto);
+
+        if (!descripcion||isNaN(cantidad)||isNaN(precioUnitario)||isNaN(iva)||isNaN(ivaCalculado)||isNaN(total)){
+            verificarCampos=true;
+            break;
+        }
     }
 
-    sessionStorage.setItem('productos', JSON.stringify(produtos));
-    window.location.href='Factura_final.html';
+    if (verificarCampos){
+        alert("Faltan productos o informacion de los mismos");
+    }else{
+        sessionStorage.setItem('productos', JSON.stringify(produtos));
+        window.location.href='Factura_final.html';
+    }
+
 }
+
+
 /**
  * Dibuja en un lienzo CANVAS la informacion de la factura A
  * @method dibujarCanvas
@@ -226,6 +240,7 @@ function enviarDatosB(){
     let filasB=cuerpoTablaB.getElementsByTagName('tr');
 
     let produtosB=[];
+    let validarCampos=false;
     for (let i=0; i<filasB.length; i++){
         let descripcion=filasB[i].querySelector(" .descripcion").value;
         let cantidad = parseFloat(filasB[i].querySelector(" .cantidad").value);
@@ -239,12 +254,20 @@ function enviarDatosB(){
             total: total
         };
         produtosB.push(productoB);
+        if (!descripcion || isNaN(cantidad)||isNaN(precioUnitario)||isNaN(total)){
+            validarCampos=true;
+            break;
+        }
+    }
+    if (validarCampos){
+        alert("Complete todos los datos");
+    }else{
+        sessionStorage.setItem('productosB', JSON.stringify(produtosB));
+        window.location.href='Factura_finalB.html';
     }
 
-    sessionStorage.setItem('productosB', JSON.stringify(produtosB));
-    window.location.href='Factura_finalB.html';
-
 }
+
 /**
  * Dibuja en un lienzo CANVAS la informacion de la factura B/C
  * @method dibujarCanvasB

@@ -160,9 +160,15 @@ function enviarDatosVendedor() {
         cuit : cuit,
         actividad : actividad
     };
-    sessionStorage.setItem('datosVendedorFor', JSON.stringify(datosVendedor));
-    window.location.href = 'DatosComprador.html';
+    if (!nombre||isNaN(cuit)||!actividad){
+        alert ("Complete todos los campos antes de avanzar")
+    }else{
+        sessionStorage.setItem('datosVendedorFor', JSON.stringify(datosVendedor));
+        window.location.href = 'DatosComprador.html';
+    }
+
 }
+
 function enviarDatosComprador(){
     var nombre=document.getElementById("compradorNombre").value;
     var cuit=document.getElementById("compradorCuit").value;
@@ -175,8 +181,13 @@ function enviarDatosComprador(){
         telefono: telefono,
         direccion:direccion
     };
-    sessionStorage.setItem('datosCompradorFor', JSON.stringify(datosComprador));
-    window.location.href='ItemsAIngresar.html';
+    if (!nombre || isNaN(cuit)||isNaN(telefono)||!direccion){
+        alert ("Complete todos los campos antes de avanzar")
+    } else{
+        sessionStorage.setItem('datosCompradorFor', JSON.stringify(datosComprador));
+        window.location.href='ItemsAIngresar.html';
+    }
+
 }
 /**
  * Obtiene la información de los productos del formulario de la factura de tipo A

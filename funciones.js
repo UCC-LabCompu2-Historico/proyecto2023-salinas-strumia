@@ -209,44 +209,31 @@ function dibujarCanvas() {
     let x = 10;
     let y = 10;
     let espacio = 20;
+    let anchoColumna = canvas.width / 2; // Ancho de cada columna
 
-    // Información del vendedor
-    let vendedorNombre = document.getElementById("vendedorNombre").value;
-    let vendedorCuit = document.getElementById("vendedorCuit").value;
-    let vendedorActividad = document.getElementById("vendedorActividad").value;
-
+    // Información del vendedor (primera fila, columna izquierda)
     ctx.fillText('Información del vendedor', x, y);
-    ctx.fillText('Nombre: ' + vendedorNombre, x, y + espacio);
-    ctx.fillText('Nro de CUIT: ' + vendedorCuit, x, y + espacio * 2);
-    ctx.fillText('Actividad Principal: ' + vendedorActividad, x, y + espacio * 3);
+    ctx.fillText('Nombre: Nombre del Vendedor', x, y + espacio);
+    ctx.fillText('Dirección: Dirección del Vendedor', x, y + 2 * espacio);
+    ctx.fillText('Teléfono: Teléfono del Vendedor', x, y + 3 * espacio);
 
-    y += espacio * 5; // Espacio adicional entre la información del vendedor y del comprador
+    // Información del comprador (primera fila, columna derecha)
+    ctx.fillText('Información del comprador', x + anchoColumna, y);
+    ctx.fillText('Nombre: Nombre del Comprador', x + anchoColumna, y + espacio);
+    ctx.fillText('Dirección: Dirección del Comprador', x + anchoColumna, y + 2 * espacio);
+    ctx.fillText('Teléfono: Teléfono del Comprador', x + anchoColumna, y + 3 * espacio);
 
-    // Información del comprador
-    let compradorNombre = document.getElementById("compradorNombre").value;
-    let compradorCuit = document.getElementById("compradorCuit").value;
-    let compradorTelefono = document.getElementById("compradorTelefono").value;
-    let compradorDireccion = document.getElementById("compradorDireccion").value;
-
-    ctx.fillText('Información del comprador', x, y);
-    ctx.fillText('Nombre: ' + compradorNombre, x, y + espacio);
-    ctx.fillText('Nro de CUIT: ' + compradorCuit, x, y + espacio * 2);
-    ctx.fillText('Teléfono: ' + compradorTelefono, x, y + espacio * 3);
-    ctx.fillText('Dirección: ' + compradorDireccion, x, y + espacio * 4);
-
-    y += espacio * 6; // Espacio adicional entre la información del comprador y los productos
-
-    // Encabezados de la tabla
+    // Títulos de las columnas de productos (segunda fila)
+    y += 5 * espacio;
     ctx.fillText('Descripción', x, y);
-    ctx.fillText('Cantidad', x + 200, y);
-    ctx.fillText('Precio Unitario', x + 300, y);
-    ctx.fillText('IVA', x + 400, y);
-    ctx.fillText('IVA Total', x + 500, y);
-    ctx.fillText('Total', x + 600, y);
+    ctx.fillText('Cantidad', x + anchoColumna / 2, y);
+    ctx.fillText('Precio Unitario', x + anchoColumna, y);
+    ctx.fillText('IVA', x + 1.5 * anchoColumna, y);
+    ctx.fillText('IVA Total', x + 2 * anchoColumna, y);
+    ctx.fillText('Total', x + 2.5 * anchoColumna, y);
 
-    y += espacio; // Espacio adicional entre los encabezados y los productos
-
-    // Productos
+    // Información de los productos
+    y += espacio;
     for (let i = 0; i < productos.length; i++) {
         y += espacio;
         let descripcion = productos[i].descripcion;
@@ -257,15 +244,16 @@ function dibujarCanvas() {
         let total = productos[i].total;
 
         ctx.fillText(descripcion, x, y);
-        ctx.fillText(cantidad, x + 200, y);
-        ctx.fillText(precioUnitario, x + 300, y);
-        ctx.fillText(iva + '%', x + 400, y);
-        ctx.fillText(ivaCalculado.toFixed(2), x + 500, y);
-        ctx.fillText(total.toFixed(2), x + 600, y);
+        ctx.fillText(cantidad, x + anchoColumna / 2, y);
+        ctx.fillText(precioUnitario, x + anchoColumna, y);
+        ctx.fillText(iva + '%', x + 1.5 * anchoColumna, y);
+        ctx.fillText(ivaCalculado.toFixed(2), x + 2 * anchoColumna, y);
+        ctx.fillText(total.toFixed(2), x + 2.5 * anchoColumna, y);
 
         y += espacio;
     }
 }
+
 /**
  * Obtiene la información de los productos del formulario de la factura de tipo B/C
  * @method enviarDatosB

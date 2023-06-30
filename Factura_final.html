@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=Bitter:wght@300&family=Bruno+Ace+SC&family=Playfair+Display&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="estiloEscritorio.css" type="text/css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
   <script type="text/javascript" src="funciones.js"></script>
 
 </head>
@@ -22,10 +23,11 @@
   </div>
 </header>
 <main>
-  <canvas id="canvas" width="400" height="400"></canvas>
+  <canvas id="canvas" width="800" height="500"></canvas>
 
   <div id="botones">
     <button type="button" onclick="location.href='index.html'">Nueva factura</button>
+    <button type="button" onclick="descargarCanvasComoPDF()">Descargar</button>
   </div>
   <img id="decoracion_relleno" src="img/imagen_extra.png" alt="Imagen vectorizada de ticket">
 

@@ -194,41 +194,76 @@ function enviarDatos(){
     }
 
 }
-
-
 /**
  * Dibuja en un lienzo CANVAS la informacion de la factura A
  * @method dibujarCanvas
  */
-function dibujarCanvas(){
-    let canvas=document.getElementById('canvas');
-    let ctx=canvas.getContext('2d');
-    ctx.clearRect(0,0, canvas.width, canvas.height);
+function dibujarCanvas() {
+    let canvas = document.getElementById('canvas');
+    let ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.font='bold 15px Helvetica';
-    let productos=JSON.parse(sessionStorage.getItem('productos'));
+    ctx.font = 'bold 15px Helvetica';
+    let productos = JSON.parse(sessionStorage.getItem('productos'));
 
-    let x=10;
-    let y=10;
-    let espacio=20;
+    let x = 10;
+    let y = 10;
+    let espacio = 20;
 
-    for (let i=0; i<productos.length; i++){
+    // Información del vendedor
+    let vendedorNombre = document.getElementById("vendedorNombre").value;
+    let vendedorCuit = document.getElementById("vendedorCuit").value;
+    let vendedorActividad = document.getElementById("vendedorActividad").value;
+
+    ctx.fillText('Información del vendedor', x, y);
+    ctx.fillText('Nombre: ' + vendedorNombre, x, y + espacio);
+    ctx.fillText('Nro de CUIT: ' + vendedorCuit, x, y + espacio * 2);
+    ctx.fillText('Actividad Principal: ' + vendedorActividad, x, y + espacio * 3);
+
+    y += espacio * 5; // Espacio adicional entre la información del vendedor y del comprador
+
+    // Información del comprador
+    let compradorNombre = document.getElementById("compradorNombre").value;
+    let compradorCuit = document.getElementById("compradorCuit").value;
+    let compradorTelefono = document.getElementById("compradorTelefono").value;
+    let compradorDireccion = document.getElementById("compradorDireccion").value;
+
+    ctx.fillText('Información del comprador', x, y);
+    ctx.fillText('Nombre: ' + compradorNombre, x, y + espacio);
+    ctx.fillText('Nro de CUIT: ' + compradorCuit, x, y + espacio * 2);
+    ctx.fillText('Teléfono: ' + compradorTelefono, x, y + espacio * 3);
+    ctx.fillText('Dirección: ' + compradorDireccion, x, y + espacio * 4);
+
+    y += espacio * 6; // Espacio adicional entre la información del comprador y los productos
+
+    // Encabezados de la tabla
+    ctx.fillText('Descripción', x, y);
+    ctx.fillText('Cantidad', x + 200, y);
+    ctx.fillText('Precio Unitario', x + 300, y);
+    ctx.fillText('IVA', x + 400, y);
+    ctx.fillText('IVA Total', x + 500, y);
+    ctx.fillText('Total', x + 600, y);
+
+    y += espacio; // Espacio adicional entre los encabezados y los productos
+
+    // Productos
+    for (let i = 0; i < productos.length; i++) {
         y += espacio;
-        let descripcion= productos[i].descripcion;
+        let descripcion = productos[i].descripcion;
         let cantidad = productos[i].cantidad;
-        let precioUnitario=productos[i].precioUnitario;
-        let iva= productos[i].iva;
+        let precioUnitario = productos[i].precioUnitario;
+        let iva = productos[i].iva;
         let ivaCalculado = productos[i].ivaCalculado;
         let total = productos[i].total;
 
         ctx.fillText(descripcion, x, y);
-        ctx.fillText('Cantidad: ' + cantidad, x, y +20)
-        ctx.fillText('Precio unitario: ' +precioUnitario, x, y +40);
-        ctx.fillText('Iva:' +iva + '%', x, y +60);
-        ctx.fillText('Iva total: ' +ivaCalculado.toFixed(2), x, y +80);
-        ctx.fillText('Total: ' +total.toFixed(2), x, y +100);
+        ctx.fillText(cantidad, x + 200, y);
+        ctx.fillText(precioUnitario, x + 300, y);
+        ctx.fillText(iva + '%', x + 400, y);
+        ctx.fillText(ivaCalculado.toFixed(2), x + 500, y);
+        ctx.fillText(total.toFixed(2), x + 600, y);
 
-        y +=120;
+        y += espacio;
     }
 }
 /**
@@ -273,31 +308,66 @@ function enviarDatosB(){
  * @method dibujarCanvasB
  */
 function dibujarCanvasB(){
-    let canvasB=document.getElementById('canvasB');
-    let ctx=canvasB.getContext('2d');
-    ctx.clearRect(0,0, canvasB.width, canvasB.height);
+        let canvas = document.getElementById('canvasB');
+        let ctx = canvasB.getContext('2d');
+        ctx.clearRect(0, 0, canvasB.width, canvasB.height);
 
-    ctx.font='bold 15px Time new roman';
-    let productosB=JSON.parse(sessionStorage.getItem('productosB'));
+        ctx.font = 'bold 15px Helvetica';
+        let productosB = JSON.parse(sessionStorage.getItem('productosB'));
 
-    let xB=10;
-    let yB=10;
-    let espacio=20;
+        let xB = 10;
+        let yB = 10;
+        let espacio = 20;
 
-    for (let i=0; i<productosB.length; i++){
-        yB += espacio;
-        let descripcion= productosB[i].descripcion;
-        let cantidad = productosB[i].cantidad;
-        let precioUnitario=productosB[i].precioUnitario;
-        let total = productosB[i].total;
+        // Información del vendedor
+        let vendedorNombre = document.getElementById('vendedorNombre').value;
+        let vendedorCuit = document.getElementById('vendedorCuit').value;
+        let vendedorActividad = document.getElementById('vendedorActividad').value;
 
-        ctx.fillText(descripcion, xB, yB);
-        ctx.fillText('Cantidad: ' + cantidad, xB, yB +20)
-        ctx.fillText('Precio unitario: ' +precioUnitario, xB, yB +40);
-        ctx.fillText('Total: ' +total.toFixed(2), xB, yB +60);
+        ctx.fillText('Información del vendedor', xB, yB);
+        ctx.fillText('Nombre: ' + vendedorNombre, xB, yB + espacio);
+        ctx.fillText('Nro de CUIT: ' + vendedorCuit, xB, yB + espacio * 2);
+        ctx.fillText('Actividad Principal: ' + vendedorActividad, xB, yB + espacio * 3);
 
-        yB +=80;
-    }
+        yB += espacio * 5; // Espacio adicional entre la información del vendedor y del comprador
+
+        // Información del comprador
+        let compradorNombre = document.getElementById('compradorNombre').value;
+        let compradorCuit = document.getElementById('compradorCuit').value;
+        let compradorTelefono = document.getElementById('compradorTelefono').value;
+        let compradorDireccion = document.getElementById('compradorDireccion').value;
+
+        ctx.fillText('Información del comprador', xB, yB);
+        ctx.fillText('Nombre: ' + compradorNombre, xB, yB + espacio);
+        ctx.fillText('Nro de CUIT: ' + compradorCuit, xB, yB + espacio * 2);
+        ctx.fillText('Teléfono: ' + compradorTelefono, xB, yB + espacio * 3);
+        ctx.fillText('Dirección: ' + compradorDireccion, xB, yB + espacio * 4);
+
+        yB += espacio * 6; // Espacio adicional entre la información del comprador y los productos
+
+        // Encabezados de la tabla
+        ctx.fillText('Descripción', xB, yB);
+        ctx.fillText('Cantidad', xB + 200, yB);
+        ctx.fillText('Precio Unitario', xB + 300, yB);
+        ctx.fillText('Total', xB + 400, yB);
+
+        yB += espacio; // Espacio adicional entre los encabezados y los productos
+
+        // Productos
+        for (let i = 0; i < productosB.length; i++) {
+            yB += espacio;
+            let descripcion = productosB[i].descripcion;
+            let cantidad = productosB[i].cantidad;
+            let precioUnitario = productosB[i].precioUnitario;
+            let total = productosB[i].total;
+
+            ctx.fillText(descripcion, xB, yB);
+            ctx.fillText(cantidad, xB + 200, yB);
+            ctx.fillText(precioUnitario, xB + 300, yB);
+            ctx.fillText(total.toFixed(2), xB + 400, yB);
+
+            yB += espacio;
+        }
 }
 /**
  * Valida el nombre del vendedor

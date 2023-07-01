@@ -1,60 +1,60 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Factura A</title>
-  <link rel="shorcut icon" href="img/Favicon.png">
-  <meta content="Salinas Strumia" name="author">
-  <meta name="description" content="Software orientado a la facturación con fines educativos">
-  <meta name="keywords" content="Facuracion, educacion">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=Bitter:wght@300&family=Bruno+Ace+SC&family=Playfair+Display&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="estiloEscritorio.css" type="text/css">
-  <script type="text/javascript" src="funciones.js"></script>
+    <meta charset="UTF-8">
+    <title>Factura A</title>
+    <link rel="shorcut icon" href="img/Favicon.png">
+    <meta content="Salinas Strumia" name="author">
+    <meta name="description" content="Software orientado a la facturación con fines educativos">
+    <meta name="keywords" content="Facuracion, educacion">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=Bitter:wght@300&family=Bruno+Ace+SC&family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estiloEscritorio.css" type="text/css">
+    <script type="text/javascript" src="funciones.js"></script>
 
 </head>
 <body>
 <header>
-  <div>
-    <img id="Encabezado" src="img/encabezado.png" alt="Imagen representativa sobre el area contable, incluye papeles y dinero">
-    <h1>Crea tu <strong>factura</strong></h1>
-  </div>
+    <div>
+        <img id="Encabezado" src="img/encabezado.png" alt="Imagen representativa sobre el area contable, incluye papeles y dinero">
+        <h1>Crea tu <strong>factura</strong></h1>
+    </div>
 </header>
 
 <nav>
-  <h3>Factura tipo A</h3>
+    <h3>Factura tipo A</h3>
 </nav>
 
 <main>
-  <table class="ingreso_producto" id="tabla">
-    <caption>Ingrese la informacion de los productos a facturar</caption>
-    <form>
-        <thead>
-         <tr>
-           <th>Descripción</th>
-           <th>Cantidad</th>
-           <th>Precio Unitario</th>
-           <th>Porcentaje IVA</th>
-           <th>IVA</th>
-           <th>Total</th>
-         </tr>
-         </thead>
-         <tbody id="cuerpoTabla"> </tbody>
-     </form>
-   </table>
+    <table class="ingreso_producto" id="tabla">
+        <caption>Ingrese la informacion de los productos a facturar</caption>
+        <form>
+            <thead>
+            <tr>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Porcentaje IVA</th>
+                <th>IVA</th>
+                <th>Total</th>
+            </tr>
+            </thead>
+            <tbody id="cuerpoTabla"> </tbody>
+        </form>
+    </table>
     <script>
         cargarPaginaA();
     </script>
- </main>
+</main>
 
- <div id="botones">
-   <button type="button" onclick="location.href='ItemsAIngresar.html'">Anterior</button>
-   <button type="button" onclick="enviarDatos()">Siguiente</button>
+<div id="botones">
+    <button type="button" onclick="location.href='ItemsAIngresar.html'">Anterior</button>
+    <button type="button" onclick="enviarDatos()">Siguiente</button>
 
- </div>
+</div>
 
- <img class="decoracion2" src="img/imagen_extra.png" alt="Imagen vectorizada de ticket">
+<img class="decoracion2" src="img/imagen_extra.png" alt="Imagen vectorizada de ticket">
 
- </body>
- </html>
+</body>
+</html>

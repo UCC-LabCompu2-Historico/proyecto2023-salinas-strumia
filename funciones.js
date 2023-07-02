@@ -549,6 +549,10 @@ function validarDireccion (){
     }
 }
 
+/**
+ * Descarga la factura tipo B/C como imagen
+ * @method DescargarImagenB
+ */
 function DescargarImagenB(){
     let canvasB = document.getElementById('canvasB');
     let imgData = canvasB.toDataURL('image/png');
@@ -558,7 +562,10 @@ function DescargarImagenB(){
     link.click();
 
 }
-
+/**
+ * Descarga la factura tipo A como imagen
+ * @method DescargarImagenA
+ */
 function DescargarFacturaA(){
     let canvas = document.getElementById('canvas');
     let imgData = canvas.toDataURL('image/png');

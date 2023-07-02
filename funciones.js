@@ -155,13 +155,19 @@ function cargarPaginaB(cuerpoTabla2=cuerpoTablaB){
         totalCell.classList.add('totalB');
     }
 }
+
+/**
+ * Obtiene los datos del vendedor para enviarselos al canvas
+ * @method enviarDatosComprador
+ */
+
 function enviarDatosVendedor() {
-    var nombre = document.getElementById("vendedorNombre").value;
-    var cuit = document.getElementById("vendedorCuit").value;
-    var actividad = document.getElementById("vendedorActividad").value;
+    let nombre = document.getElementById("vendedorNombre").value;
+    let cuit = document.getElementById("vendedorCuit").value;
+    let actividad = document.getElementById("vendedorActividad").value;
 
 
-    var datosVendedor = {
+    let datosVendedor = {
         nombre: nombre,
         cuit : cuit,
         actividad : actividad
@@ -175,14 +181,19 @@ function enviarDatosVendedor() {
     }
 
 }
+
+/**
+ * Obtiene los datos del comprador para enviarselos al canvas
+ * @method enviarDatosComprador
+ */
 function enviarDatosComprador(){
-    var nombre=document.getElementById("compradorNombre").value;
-    var cuit=document.getElementById("compradorCuit").value;
-    var telefono=document.getElementById("compradorTelefono").value;
-    var direccion=document.getElementById("compradorDireccion").value;
+    let nombre=document.getElementById("compradorNombre").value;
+    let cuit=document.getElementById("compradorCuit").value;
+    let telefono=document.getElementById("compradorTelefono").value;
+    let direccion=document.getElementById("compradorDireccion").value;
 
 
-    var datosComprador ={
+    let datosComprador ={
         nombre:nombre,
         cuit: cuit,
         telefono: telefono,
@@ -258,11 +269,11 @@ function dibujarCanvas() {
 
     ctx.font = 'bold 15px Helvetica';
     let productos = JSON.parse(sessionStorage.getItem('productos'));
-    var datosVendedor = sessionStorage.getItem('datosVendedorFor');
-    var datosComprador = sessionStorage.getItem('datosCompradorFor');
+    let datosVendedor = sessionStorage.getItem('datosVendedorFor');
+    let datosComprador = sessionStorage.getItem('datosCompradorFor');
     if (datosVendedor || datosComprador) {
-        var datosVendedor = JSON.parse(datosVendedor);
-        var datosComprador = JSON.parse(datosComprador);
+         datosVendedor = JSON.parse(datosVendedor);
+         datosComprador = JSON.parse(datosComprador);
 
 
         let x = 10;
@@ -434,7 +445,7 @@ function dibujarCanvasB() {
             ctx.fillText('Precio Unitario', xB + 300, yB);
             ctx.fillText('Total', xB + 450, yB);
 
-            yB += espacio; // Espacio adicional entre los encabezados y los productos
+
         } else if (contador === 7) {
             // Productos
             for (let i = 0; i < productosB.length; i++) {
@@ -449,7 +460,7 @@ function dibujarCanvasB() {
                 ctx.fillText(precioUnitario, xB + 300, yB);
                 ctx.fillText(total.toFixed(2), xB + 450, yB);
 
-                yB += espacio;
+
             }
             // Se ha mostrado toda la información, se puede detener el setInterval
             clearInterval(intervalo);
@@ -464,7 +475,7 @@ function dibujarCanvasB() {
  * @method validarNombreV
  */
 function validarNombreV() {
-    var nombre = document.getElementById("vendedorNombre").value;
+    let nombre = document.getElementById("vendedorNombre").value;
 
 
     if (!isNaN(nombre)) {
@@ -477,7 +488,7 @@ function validarNombreV() {
  * @method validarNombreC
  */
 function validarNombreC() {
-    var nombre = document.getElementById("compradorNombre").value;
+    let nombre = document.getElementById("compradorNombre").value;
 
 
     if (!isNaN(nombre)) {
@@ -490,7 +501,7 @@ function validarNombreC() {
  * @method validarCuitV
  */
 function validarCuitV() {
-    var cuit = document.getElementById("vendedorCuit").value;
+    let cuit = document.getElementById("vendedorCuit").value;
 
 
     if (cuit<0) {
@@ -503,7 +514,7 @@ function validarCuitV() {
  * @method validarCuitC
  */
 function validarCuitC() {
-    var cuit = document.getElementById("compradorCuit").value;
+    let cuit = document.getElementById("compradorCuit").value;
 
 
     if (cuit<0|| isNaN(cuit)) {
@@ -516,7 +527,7 @@ function validarCuitC() {
  * @method validarActividad
  */
 function validarActividad() {
-    var actividad = document.getElementById("vendedorActividad").value;
+    let actividad = document.getElementById("vendedorActividad").value;
 
 
     if (!isNaN(actividad)) {
@@ -529,7 +540,7 @@ function validarActividad() {
  * @method validarTelefono
  */
 function validarTelefono (){
-    var telefono = document.getElementById("compradorTelefono").value;
+    let telefono = document.getElementById("compradorTelefono").value;
 
 
     if (telefono<0){
@@ -542,7 +553,7 @@ function validarTelefono (){
  * @method validarDireccion
  */
 function validarDireccion (){
-    var direccion = document.getElementById("compradorDireccion").value;
+    let direccion = document.getElementById("compradorDireccion").value;
     if (!isNaN(direccion)) {
         alert("No se pueden ingresar números en la la direccion. Por favor, ingresa una direccion válida.");
         document.getElementById("compradorDireccion").value = "";

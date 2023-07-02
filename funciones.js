@@ -39,11 +39,7 @@ function calculoB(fila){
         fila.querySelector(' .precio').value=' ';
         return;
     }
-
-
     const total=cant*pUnit;
-
-
     fila.querySelector(' .totalB input').value=total.toFixed(2);
 }
 /**
@@ -61,10 +57,6 @@ function generarTablaA(){
 
     window.location.href='Factura_A.html?filas=' +cantFilas;
 }
-
-
-
-
 /**
  * crea una tabla con un número determinado de filas y celdas utilizando los parámetros de la URL,
  * y establece clases y atributos en los elementos para permitir su manipulación posterior, como el cálculo del IVA y el total
@@ -74,9 +66,6 @@ function generarTablaA(){
 function cargarPaginaA(cuerpoTabla1 = cuerpoTabla) {
     let url= new URLSearchParams(window.location.search);
     let cantFilas = url.get('filas');
-
-
-
 
     let tbody=document.createElement('cuerpoTabla');
     for (let i=0; i<cantFilas; i++){
@@ -152,18 +141,13 @@ function cargarPaginaB(cuerpoTabla2=cuerpoTablaB){
         let descripcionId='Descripcion_' + (i+1);
         descripcionCell.innerHTML= '<input type="text" name="Descripcion" placeholder="Descripcion" class="descripcion" id="' + descripcionId +'">'
 
-
         let cantidadCell=fila.insertCell(1);
         let cantidadId='cant_' + (i+1);
         cantidadCell.innerHTML=' <input type="number" name="Cantidad" placeholder="Cant" class="cantidad" id="' + cantidadId +'" onchange="calculoB(this.parentNode.parentNode)">'
 
-
         let precioUnitarioCell = fila.insertCell(2);
         let preUnitId='pUnit_' + (i+1);
         precioUnitarioCell.innerHTML='<input type="number" name="PrecUnit" placeholder="Precio unit." class="precio" id="' + preUnitId +'" onchange="calculoB(this.parentNode.parentNode)">'
-
-
-
 
         let totalCell=fila.insertCell(3);
         let totalId='total_' + (i+1);
@@ -182,8 +166,14 @@ function enviarDatosVendedor() {
         cuit : cuit,
         actividad : actividad
     };
-    sessionStorage.setItem('datosVendedorFor', JSON.stringify(datosVendedor));
-    window.location.href = 'DatosComprador.html';
+
+    if(!nombre || isNaN(cuit) || !actividad){
+        alert("Complete todos los datos antes de avanzar")
+    } else{
+        sessionStorage.setItem('datosVendedorFor', JSON.stringify(datosVendedor));
+        window.location.href = 'DatosComprador.html';
+    }
+
 }
 function enviarDatosComprador(){
     var nombre=document.getElementById("compradorNombre").value;
@@ -198,9 +188,14 @@ function enviarDatosComprador(){
         telefono: telefono,
         direccion:direccion
     };
-    sessionStorage.setItem('datosCompradorFor', JSON.stringify(datosComprador));
-    window.location.href='ItemsAIngresar.html';
+    if (!nombre || isNaN(cuit)||isNaN(telefono)||!direccion){
+        alert ("Complete todos los campos antes de avanzar")
+    } else{
+        sessionStorage.setItem('datosCompradorFor', JSON.stringify(datosComprador));
+        window.location.href='ItemsAIngresar.html';
+    }
 }
+
 /**
  * Obtiene la información de los productos del formulario de la factura de tipo A
  * @method enviarDatos
@@ -348,7 +343,7 @@ function dibujarCanvas() {
                 // Se ha mostrado toda la información, se puede detener el setInterval
                 clearInterval(intervalo);
             }
-        }, 1000); // Intervalo de 1 segundo (puedes ajustar el valor según tus preferencias)
+        }, 1000); // Intervalo de 1 segundo
     }
 }
 /**
@@ -388,82 +383,80 @@ function enviarDatosB(){
         window.location.href='Factura_finalB.html';
     }
 
-
 }
+
 /**
  * Dibuja en un lienzo CANVAS la informacion de la factura B/C
  * @method dibujarCanvasB
  */
-function dibujarCanvasB(){
+function dibujarCanvasB() {
     let canvasB = document.getElementById('canvasB');
     let ctx = canvasB.getContext('2d');
     ctx.clearRect(0, 0, canvasB.width, canvasB.height);
 
-
     ctx.font = 'bold 15px Helvetica';
     let productosB = JSON.parse(sessionStorage.getItem('productosB'));
-    var datosVendedor = sessionStorage.getItem('datosVendedorFor');
-    var datosComprador = sessionStorage.getItem('datosCompradorFor');
-    if (datosVendedor || datosComprador) {
-        var datosVendedor = JSON.parse(datosVendedor);
-        var datosComprador = JSON.parse(datosComprador);
+    let datosVendedor = JSON.parse(sessionStorage.getItem('datosVendedorFor'));
+    let datosComprador = JSON.parse(sessionStorage.getItem('datosCompradorFor'));
+    let xB = 10;
+    let yB = 10;
+    let espacio = 20;
+    let contador = 0;
 
+    let intervalo = setInterval(function () {
+        contador++;
 
-        let xB = 10;
-        let yB = 10;
-        let espacio = 20;
+        if (contador === 1) {
+            // Información del vendedor
+            ctx.fillText('Información del vendedor', xB, yB);
+            ctx.fillText('Nombre: ' + datosVendedor.nombre, xB, yB + espacio);
+        } else if (contador === 2) {
+            ctx.fillText('Nro de CUIT: ' + datosVendedor.cuit, xB, yB + espacio * 2);
+        } else if (contador === 3) {
+            ctx.fillText('Actividad Principal: ' + datosVendedor.actividad, xB, yB + espacio * 3);
+            yB += espacio * 5; // Espacio adicional entre la información del vendedor y del comprador
 
+            // Información del comprador
+            ctx.fillText('Información del comprador', xB, yB);
+            ctx.fillText('Nombre: ' + datosComprador.nombre, xB, yB + espacio);
+        } else if (contador === 4) {
+            ctx.fillText('Nro de CUIT: ' + datosComprador.cuit, xB, yB + espacio * 2);
+        } else if (contador === 5) {
+            ctx.fillText('Teléfono: ' + datosComprador.telefono, xB, yB + espacio * 3);
+        } else if (contador === 6) {
+            ctx.fillText('Dirección: ' + datosComprador.direccion, xB, yB + espacio * 4);
 
-        // Información del vendedor
-        ctx.fillText('Información del vendedor', xB, yB);
-        ctx.fillText('Nombre: ' + datosVendedor.nombre, xB, yB + espacio);
-        ctx.fillText('Nro de CUIT: ' + datosVendedor.cuit, xB, yB + espacio * 2);
-        ctx.fillText('Actividad Principal: ' + datosVendedor.actividad, xB, yB + espacio * 3);
+            yB += espacio * 6; // Espacio adicional entre la información del comprador y los productos
 
+            // Encabezados de la tabla
+            ctx.fillText('Descripción', xB, yB);
+            ctx.fillText('Cantidad', xB + 200, yB);
+            ctx.fillText('Precio Unitario', xB + 300, yB);
+            ctx.fillText('Total', xB + 450, yB);
 
-        yB += espacio * 5; // Espacio adicional entre la información del vendedor y del comprador
+            yB += espacio; // Espacio adicional entre los encabezados y los productos
+        } else if (contador === 7) {
+            // Productos
+            for (let i = 0; i < productosB.length; i++) {
+                yB += espacio;
+                let descripcion = productosB[i].descripcion;
+                let cantidad = productosB[i].cantidad;
+                let precioUnitario = productosB[i].precioUnitario;
+                let total = productosB[i].total;
 
+                ctx.fillText(descripcion, xB, yB);
+                ctx.fillText(cantidad, xB + 200, yB);
+                ctx.fillText(precioUnitario, xB + 300, yB);
+                ctx.fillText(total.toFixed(2), xB + 450, yB);
 
-        // Información del comprador
-        ctx.fillText('Información del comprador', xB, yB);
-        ctx.fillText('Nombre: ' + datosComprador.nombre, xB, yB + espacio);
-        ctx.fillText('Nro de CUIT: ' + datosComprador.cuit, xB, yB + espacio * 2);
-        ctx.fillText('Teléfono: ' + datosComprador.telefono, xB, yB + espacio * 3);
-        ctx.fillText('Dirección: ' + datosComprador.direccion, xB, yB + espacio * 4);
-
-
-        yB += espacio * 6; // Espacio adicional entre la información del comprador y los productos
-
-
-        // Encabezados de la tabla
-        ctx.fillText('Descripción', xB, yB);
-        ctx.fillText('Cantidad', xB + 200, yB);
-        ctx.fillText('Precio Unitario', xB + 300, yB);
-        ctx.fillText('Total', xB + 450, yB);
-
-
-        yB += espacio; // Espacio adicional entre los encabezados y los productos
-
-
-        // Productos
-        for (let i = 0; i < productosB.length; i++) {
-            yB += espacio;
-            let descripcion = productosB[i].descripcion;
-            let cantidad = productosB[i].cantidad;
-            let precioUnitario = productosB[i].precioUnitario;
-            let total = productosB[i].total;
-
-
-            ctx.fillText(descripcion, xB, yB);
-            ctx.fillText(cantidad, xB + 200, yB);
-            ctx.fillText(precioUnitario, xB + 300, yB);
-            ctx.fillText(total.toFixed(2), xB + 450, yB);
-
-
-            yB += espacio;
+                yB += espacio;
+            }
+            // Se ha mostrado toda la información, se puede detener el setInterval
+            clearInterval(intervalo);
         }
-    }
+    }, 1000);
 }
+
 
 
 /**
@@ -556,53 +549,21 @@ function validarDireccion (){
     }
 }
 
-
-function validarIndex(event){
-    var nombre=document.getElementById("vendedorNombre").value;
-    var cuit=document.getElementById("vendedorCuit").value;
-    var actPrincipal=document.getElementById("vendedorActividad").value;
-
-
-    if (!nombre || !cuit || !actPrincipal){
-        event.preventDefault();
-        alert("Complete los campos")
-    }else {
-        window.location.href="DatosComprador.html";
-    }
-
+function DescargarImagenB(){
+    let canvasB = document.getElementById('canvasB');
+    let imgData = canvasB.toDataURL('image/png');
+    let link = document.createElement('a');
+    link.href = imgData;
+    link.download = 'FacturaB.png';
+    link.click();
 
 }
 
-
-function validarComprador(event){
-    var nombre=document.getElementById("compradorNombre").value;
-    var cuit=document.getElementById("compradorCuit").value;
-    var telefono=document.getElementById("compradorTelefono").value;
-    var direccion=document.getElementById("compradorDireccion").value;
-
-
-    if (!nombre || !cuit || !telefono || !direccion){
-        event.preventDefault();
-        alert("Complete los datos solicitados");
-    }else {
-        window.location.href="ItemsAIngresar.html";
-    }
-}
-function descargarComoPDF() {
-    // Obtén el contenido del canvas
+function DescargarFacturaA(){
     let canvas = document.getElementById('canvas');
-    let canvasDataURL = canvas.toDataURL('image/png');
-
-
-    // Crea una instancia de jsPDF
-    let pdf = new jsPDF();
-
-
-    // Agrega el contenido del canvas al PDF
-    pdf.addImage(canvasDataURL, 'PNG', 0, 0, canvas.width, canvas.height);
-
-
-    // Descarga el archivo PDF
-    pdf.save('canvas.pdf');
+    let imgData = canvas.toDataURL('image/png');
+    let link = document.createElement('a');
+    link.href = imgData;
+    link.download = 'FacturaA.png';
+    link.click();
 }
-

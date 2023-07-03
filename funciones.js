@@ -155,7 +155,6 @@ function cargarPaginaB(cuerpoTabla2=cuerpoTablaB){
         totalCell.classList.add('totalB');
     }
 }
-
 /**
  * Obtiene los datos del vendedor para enviarselos al canvas
  * @method enviarDatosComprador
@@ -264,6 +263,7 @@ function enviarDatos(){
 function dibujarCanvas() {
     let canvas = document.getElementById('canvas');
     let ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'blue';
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 
@@ -403,6 +403,8 @@ function enviarDatosB(){
 function dibujarCanvasB() {
     let canvasB = document.getElementById('canvasB');
     let ctx = canvasB.getContext('2d');
+    context.fillStyle = 'red';
+    context.fillStyle = 'white';
     ctx.clearRect(0, 0, canvasB.width, canvasB.height);
 
     ctx.font = 'bold 15px Helvetica';

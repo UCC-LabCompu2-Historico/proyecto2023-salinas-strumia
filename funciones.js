@@ -403,8 +403,7 @@ function enviarDatosB(){
 function dibujarCanvasB() {
     let canvasB = document.getElementById('canvasB');
     let ctx = canvasB.getContext('2d');
-    context.fillStyle = 'red';
-    context.fillStyle = 'white';
+    ctx.fillStyle = 'blue';
     ctx.clearRect(0, 0, canvasB.width, canvasB.height);
 
     ctx.font = 'bold 15px Helvetica';

@@ -10,7 +10,7 @@ Esta pagina corresponde a un software de facturacion con fines educativos
 * CSS3
 
 ## Link al sitio
-[Software de facturación](https://ucc-labcompu2.github.io/proyecto2023-salinas-strumia/)
+[Software de facturación](https://ucc-labcompu2-historico.github.io/proyecto2023-salinas-strumia/)
 
 ## Requisitos del Primer Parcial
 
